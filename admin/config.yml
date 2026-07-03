@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: mershandlee/mershandlee
+  name: git-gateway
   branch: main
 
 media_folder: "images/uploads"
@@ -26,3 +25,12 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Meta", name: "meta", widget: "string" }
       - { label: "Excerpt", name: "excerpt", widget: "text" }
+    
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "about"
+        label: "About"
+        file: "_data/about.json"
+        fields:
+          - { label: "Content", name: "paragraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
