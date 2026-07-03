@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="mershandlee is a Vienna-based architecture and design studio founded in 2017.">
   <title>Works | mershandlee</title>
-  <link rel="stylesheet" href="admin/cms.css">
   <style>
     * {
       margin: 0;
@@ -23,11 +22,12 @@
     
     .wrapper {
       display: flex;
+      min-height: 100vh;
     }
     
     /* LEFT SIDEBAR - FIXED */
     .sidebar {
-      width: 30%;
+      width: 35%;
       padding: 60px 40px;
       display: flex;
       flex-direction: column;
@@ -35,28 +35,37 @@
       height: 100vh;
       left: 0;
       top: 0;
-      border-right: 1px solid #f0f0f0;
     }
     
     .logo {
-      font-size: 72px;
+      font-size: 80px;
       font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 80px;
-      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 0;
+      letter-spacing: -3px;
+      flex-grow: 1;
+      display: flex;
+      align-items: flex-start;
+      padding-top: 20px;
+    }
+    
+    .sidebar-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
     }
     
     nav {
       display: flex;
-      gap: 30px;
-      font-size: 15px;
+      gap: 20px;
+      font-size: 14px;
       font-weight: 500;
     }
     
     nav button {
       background: none;
       border: none;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 500;
       color: #000;
       cursor: pointer;
@@ -68,48 +77,55 @@
       opacity: 0.6;
     }
     
-    .contact {
-      font-size: 14px;
-      margin-top: auto;
-    }
-    
-    .contact a {
-      color: #000;
-      text-decoration: none;
-    }
-    
     /* RIGHT MAIN CONTENT */
     .main {
-      width: 70%;
-      margin-left: 30%;
+      width: 65%;
+      margin-left: 35%;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .main-content {
+      flex: 1;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow-y: auto;
     }
     
     .page {
       display: none;
+      width: 100%;
     }
     
     .page.active {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     
     /* PROJECTS PAGE */
-    .projects-container {
-      padding: 60px;
+    .projects-scroll {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 100px;
     }
     
     .project-section {
-      margin-bottom: 120px;
-      padding-bottom: 80px;
-      border-bottom: 1px solid #f0f0f0;
-    }
-    
-    .project-section:last-child {
-      border-bottom: none;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     
     .project-image {
-      width: 100%;
+      width: 90%;
+      max-width: 600px;
       height: 500px;
       background: #f5f5f5;
       margin-bottom: 40px;
@@ -119,7 +135,6 @@
       font-size: 13px;
       color: #ccc;
       overflow: hidden;
-      object-fit: cover;
     }
     
     .project-image img {
@@ -128,14 +143,9 @@
       object-fit: cover;
     }
     
-    .project-info {
-      cursor: pointer;
-    }
-    
     .project-title {
       font-size: 18px;
       font-weight: 600;
-      margin-bottom: 12px;
     }
     
     .project-index {
@@ -143,6 +153,7 @@
       color: #999;
       opacity: 0;
       transition: opacity 0.2s;
+      margin-top: 8px;
     }
     
     .project-section:hover .project-index {
@@ -150,15 +161,16 @@
     }
     
     /* WRITINGS PAGE */
-    .writings-container {
-      padding: 60px;
-      max-width: 800px;
+    .writings-content {
+      width: 100%;
+      max-width: 700px;
     }
     
     .writing-section {
       margin-bottom: 80px;
       padding-bottom: 80px;
       border-bottom: 1px solid #f0f0f0;
+      text-align: center;
     }
     
     .writing-section:last-child {
@@ -189,9 +201,9 @@
     }
     
     /* ABOUT PAGE */
-    .about-container {
-      padding: 60px;
-      max-width: 800px;
+    .about-content {
+      width: 100%;
+      max-width: 700px;
     }
     
     .about-text {
@@ -199,6 +211,18 @@
       line-height: 1.8;
       color: #333;
       margin-bottom: 24px;
+      text-align: center;
+    }
+    
+    .main-footer {
+      padding: 40px 60px;
+      text-align: right;
+      font-size: 14px;
+    }
+    
+    .main-footer a {
+      color: #000;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -206,145 +230,190 @@
 
   <div class="wrapper">
     
-    <!-- LEFT SIDEBAR -->
+    <!-- LEFT SIDEBAR - FIXED -->
     <div class="sidebar">
       <div class="logo">m e r sh<br>and l ee</div>
       
-      <nav>
-        <button onclick="showPage('projects')">Projects</button>
-        <button onclick="showPage('writings')">Writings</button>
-        <button onclick="showPage('about')">About</button>
-      </nav>
-      
-      <div class="contact">
-        <a href="mailto:studio@mershandlee.com">studio@mershandlee.com</a>
+      <div class="sidebar-footer">
+        <nav>
+          <button onclick="showPage('projects')">Projects</button>
+          <button onclick="showPage('about')">About</button>
+          <button onclick="showPage('writings')">Writings</button>
+        </nav>
       </div>
     </div>
 
     <!-- RIGHT MAIN CONTENT -->
     <div class="main">
-      
-      <!-- PROJECTS PAGE -->
-      <div id="projects" class="page active">
-        <div class="projects-container" id="projects-list">
-          <!-- Projects loaded from data -->
+      <div class="main-content">
+        
+        <!-- PROJECTS PAGE -->
+        <div id="projects" class="page active">
+          <div class="projects-scroll">
+            
+            <div class="project-section">
+              <div class="project-image">City of Many Acts</div>
+              <div class="project-title">City of Many Acts</div>
+              <div class="project-index">01</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Rewilding the Ground</div>
+              <div class="project-title">Rewilding the Ground</div>
+              <div class="project-index">02</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Silent Witness – Traveler</div>
+              <div class="project-title">Silent Witness – Traveler</div>
+              <div class="project-index">03</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Plus Minus Wall</div>
+              <div class="project-title">Plus Minus Wall</div>
+              <div class="project-index">04</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Nikzi Bookshop</div>
+              <div class="project-title">Nikzi Bookshop</div>
+              <div class="project-index">05</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Diamond to Wall</div>
+              <div class="project-title">Diamond to Wall</div>
+              <div class="project-index">06</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">This is That</div>
+              <div class="project-title">This is That</div>
+              <div class="project-index">07</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Oblique</div>
+              <div class="project-title">Oblique</div>
+              <div class="project-index">08</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Misfit Qualities</div>
+              <div class="project-title">Misfit Qualities</div>
+              <div class="project-index">09</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Vase, Oval and Triangle</div>
+              <div class="project-title">Vase, Oval and Triangle</div>
+              <div class="project-index">10</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Wall House 2 - Oblique Projection</div>
+              <div class="project-title">Wall House 2 - Oblique Projection</div>
+              <div class="project-index">11</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Palais de Tokyo 2019</div>
+              <div class="project-title">Palais de Tokyo 2019</div>
+              <div class="project-index">12</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Possible Actualities</div>
+              <div class="project-title">Possible Actualities</div>
+              <div class="project-index">13</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Micromega as Discrete Interpretations</div>
+              <div class="project-title">Micromega as Discrete Interpretations</div>
+              <div class="project-index">14</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Behind the Proun Paintings</div>
+              <div class="project-title">Behind the Proun Paintings</div>
+              <div class="project-index">15</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">2019 Seoul Biennale</div>
+              <div class="project-title">2019 Seoul Biennale</div>
+              <div class="project-index">16</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Object Building/City Object</div>
+              <div class="project-title">Object Building/City Object</div>
+              <div class="project-index">17</div>
+            </div>
+            
+          </div>
         </div>
-      </div>
 
-      <!-- WRITINGS PAGE -->
-      <div id="writings" class="page">
-        <div class="writings-container" id="writings-list">
-          <!-- Writings loaded from data -->
+        <!-- WRITINGS PAGE -->
+        <div id="writings" class="page">
+          <div class="writings-content">
+            
+            <div class="writing-section">
+              <div class="writing-title">Desire and Pain: The Thirteen Watchtowers of Cannaregio</div>
+              <div class="writing-meta">Drawing Matter, Co-authored with Mehrshad Atashi, 2024</div>
+              <div class="writing-excerpt">A close reading of John Hejduk's drawing through literary theory, examining program inversion, ritual, time, and the observer as inhabitant of space.</div>
+            </div>
+            
+            <div class="writing-section">
+              <div class="writing-title">John Hejduk's Farm Library</div>
+              <div class="writing-meta">Drawing Matter, Co-authored with Mehrshad Atashi, 2024</div>
+              <div class="writing-excerpt">Drawing as pedagogy. A single architectural drawing as entry point to understanding time, memory, and the inhabited other.</div>
+            </div>
+            
+            <div class="writing-section">
+              <div class="writing-title">Remoteness from the Proto-Image of Convention: Exploring Daniel Libeskind's Works (1970–1985) alongside His One Hundred Precedents</div>
+              <div class="writing-meta">Doctoral Dissertation, University of Innsbruck, December 2024. Supervisor: Peter Volgger</div>
+              <div class="writing-excerpt">Exploring Daniel Libeskind's works (1970–1985) alongside his One Hundred Precedents. Kant's schema-versus-image distinction as conceptual framework. Chapters on Micromega, the Three Lessons in Architecture, Myth and Idea of Site, and architectural otherness.</div>
+            </div>
+            
+          </div>
         </div>
-      </div>
 
-      <!-- ABOUT PAGE -->
-      <div id="about" class="page">
-        <div class="about-container" id="about-content">
-          <!-- About content loaded from data -->
+        <!-- ABOUT PAGE -->
+        <div id="about" class="page">
+          <div class="about-content">
+            
+            <p class="about-text">mershandlee is an architecture and design studio founded in 2017 in Vienna. Co-founded and co-run by Lida Badafareh and Mehrshad Atashi.</p>
+            
+            <p class="about-text">The studio explores spatial otherness through displacement, drawing, and research. We displace an object, drawing, or painting from its context and destabilize it until it resists full comprehension—producing "otherness." Recurring sources: Libeskind's Micromega, Lissitzky's Proun, Hejduk's theatrical settings and drawings.</p>
+            
+            <p class="about-text">The practice pivoted around 2023 from drawing and exhibition work toward civic, narrative, and ecological scales.</p>
+            
+            <p class="about-text"><strong>Teaching:</strong> Lida teaches at the Department for Architecture Theory and Philosophy of Technics (ATTP), TU Wien. Prior teaching at TU Graz, University of Innsbruck, and UdK Berlin.</p>
+            
+            <p class="about-text"><strong>Education:</strong> Lida holds an MA in Architecture from Städelschule, Frankfurt, and a PhD from University of Innsbruck (December 2024). Mehrshad studied at the University of Tehran.</p>
+            
+          </div>
         </div>
+        
       </div>
       
+      <div class="main-footer">
+        <a href="mailto:studio@mershandlee.com">studio@mershandlee.com</a>
+      </div>
     </div>
   </div>
 
-  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
-  
   <script>
-    // Load projects from JSON
-    async function loadProjects() {
-      try {
-        const response = await fetch('projects.json');
-        const data = await response.json();
-        renderProjects(data.projects);
-      } catch (error) {
-        console.log('Projects not loaded yet');
-      }
-    }
-    
-    // Load writings from JSON
-    async function loadWritings() {
-      try {
-        const response = await fetch('writings.json');
-        const data = await response.json();
-        renderWritings(data.writings);
-      } catch (error) {
-        console.log('Writings not loaded yet');
-      }
-    }
-    
-    // Load about content
-    async function loadAbout() {
-      try {
-        const response = await fetch('about.json');
-        const data = await response.json();
-        renderAbout(data);
-      } catch (error) {
-        console.log('About not loaded yet');
-      }
-    }
-    
-    function renderProjects(projects) {
-      const container = document.getElementById('projects-list');
-      container.innerHTML = '';
-      
-      projects.forEach((project, index) => {
-        const section = document.createElement('div');
-        section.className = 'project-section';
-        section.innerHTML = `
-          <div class="project-image">
-            ${project.image ? `<img src="${project.image}" alt="${project.title}">` : 'Image placeholder'}
-          </div>
-          <div class="project-info">
-            <div class="project-title">${project.title}</div>
-            <div class="project-index">${String(index + 1).padStart(2, '0')}</div>
-          </div>
-        `;
-        container.appendChild(section);
-      });
-    }
-    
-    function renderWritings(writings) {
-      const container = document.getElementById('writings-list');
-      container.innerHTML = '';
-      
-      writings.forEach((writing) => {
-        const section = document.createElement('div');
-        section.className = 'writing-section';
-        section.innerHTML = `
-          <div class="writing-title">${writing.title}</div>
-          <div class="writing-meta">${writing.meta}</div>
-          <div class="writing-excerpt">${writing.excerpt}</div>
-        `;
-        container.appendChild(section);
-      });
-    }
-    
-    function renderAbout(about) {
-      const container = document.getElementById('about-content');
-      container.innerHTML = '';
-      
-      about.paragraphs.forEach((para) => {
-        const p = document.createElement('p');
-        p.className = 'about-text';
-        p.innerHTML = para;
-        container.appendChild(p);
-      });
-    }
-    
     function showPage(pageName) {
       document.querySelectorAll('.page').forEach(page => {
         page.classList.remove('active');
       });
       document.getElementById(pageName).classList.add('active');
+      document.querySelector('.main-content').scrollTop = 0;
     }
-    
-    // Load content on page load
-    window.addEventListener('load', () => {
-      loadProjects();
-      loadWritings();
-      loadAbout();
-    });
   </script>
 
 </body>
