@@ -2,8 +2,6 @@ backend:
   name: github
   repo: mershandlee/mershandlee
   branch: main
-  auth_endpoint: api/auth
-  commit_message: "[CMS] {{collection}} {{action}}: {{slug}}"
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
@@ -26,15 +24,5 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Meta", name: "meta", widget: "string", hint: "e.g. Drawing Matter, 2024" }
+      - { label: "Meta", name: "meta", widget: "string" }
       - { label: "Excerpt", name: "excerpt", widget: "text" }
-    
-  - name: "pages"
-    label: "Pages"
-    files:
-      - name: "about"
-        label: "About"
-        file: "_data/about.json"
-        fields:
-          - { label: "Content", name: "paragraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
-          - { label: "Contact Email", name: "email", widget: "string" }
