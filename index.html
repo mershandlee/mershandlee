@@ -1,1 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="mershandlee is a Vienna-based architecture and design studio founded in 2017.">
+  <title>Works | mershandlee</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #000;
+      background: #fff;
+    }
+    
+    .wrapper {
+      display: flex;
+      min-height: 100vh;
+    }
+    
+    /* LEFT SIDEBAR - FIXED */
+    .sidebar {
+      width: 35%;
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      height: 100vh;
+      left: 0;
+      top: 0;
+    }
+    
+    .logo {
+      font-size: 80px;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 0;
+      letter-spacing: -3px;
+      flex-grow: 1;
+      display: flex;
+      align-items: flex-start;
+      padding-top: 20px;
+    }
+    
+    .sidebar-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    
+    nav {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    
+    nav button {
+      background: none;
+      border: none;
+      font-size: 14px;
+      font-weight: 500;
+      color: #000;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0;
+    }
+    
+    nav button:hover {
+      opacity: 0.6;
+    }
+    
+    /* RIGHT MAIN CONTENT */
+    .main {
+      width: 65%;
+      margin-left: 35%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .main-content {
+      flex: 1;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow-y: auto;
+    }
+    
+    .page {
+      display: none;
+      width: 100%;
+    }
+    
+    .page.active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    /* PROJECTS PAGE */
+    .projects-scroll {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 100px;
+    }
+    
+    .project-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .project-image {
+      width: 90%;
+      max-width: 600px;
+      height: 500px;
+      background: #f5f5f5;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: #ccc;
+      overflow: hidden;
+    }
+    
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .project-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    
+    .project-index {
+      font-size: 12px;
+      color: #999;
+      opacity: 0;
+      transition: opacity 0.2s;
+      margin-top: 8px;
+    }
+    
+    .project-section:hover .project-index {
+      opacity: 1;
+    }
+    
+    /* WRITINGS PAGE */
+    .writings-content {
+      width: 100%;
+      max-width: 700px;
+    }
+    
+    .writing-section {
+      margin-bottom: 80px;
+      padding-bottom: 80px;
+      border-bottom: 1px solid #f0f0f0;
+      text-align: center;
+    }
+    
+    .writing-section:last-child {
+      border-bottom: none;
+    }
+    
+    .writing-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    
+    .writing-title:hover {
+      opacity: 0.6;
+    }
+    
+    .writing-meta {
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 12px;
+    }
+    
+    .writing-excerpt {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.7;
+    }
+    
+    /* ABOUT PAGE */
+    .about-content {
+      width: 100%;
+      max-width: 700px;
+    }
+    
+    .about-text {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #333;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    
+    .main-footer {
+      padding: 40px 60px;
+      text-align: right;
+      font-size: 14px;
+    }
+    
+    .main-footer a {
+      color: #000;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
 
+  <div class="wrapper">
+    
+    <!-- LEFT SIDEBAR - FIXED -->
+    <div class="sidebar">
+      <div class="logo">m e r sh<br>and l ee</div>
+      
+      <div class="sidebar-footer">
+        <nav>
+          <button onclick="showPage('projects')">Projects</button>
+          <button onclick="showPage('about')">About</button>
+          <button onclick="showPage('writings')">Writings</button>
+        </nav>
+      </div>
+    </div>
+
+    <!-- RIGHT MAIN CONTENT -->
+    <div class="main">
+      <div class="main-content">
+        
+        <!-- PROJECTS PAGE -->
+        <div id="projects" class="page active">
+          <div class="projects-scroll">
+            
+            <div class="project-section">
+              <div class="project-image">City of Many Acts</div>
+              <div class="project-title">City of Many Acts</div>
+              <div class="project-index">01</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Rewilding the Ground</div>
+              <div class="project-title">Rewilding the Ground</div>
+              <div class="project-index">02</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Silent Witness – Traveler</div>
+              <div class="project-title">Silent Witness – Traveler</div>
+              <div class="project-index">03</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Plus Minus Wall</div>
+              <div class="project-title">Plus Minus Wall</div>
+              <div class="project-index">04</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Nikzi Bookshop</div>
+              <div class="project-title">Nikzi Bookshop</div>
+              <div class="project-index">05</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Diamond to Wall</div>
+              <div class="project-title">Diamond to Wall</div>
+              <div class="project-index">06</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">This is That</div>
+              <div class="project-title">This is That</div>
+              <div class="project-index">07</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Oblique</div>
+              <div class="project-title">Oblique</div>
+              <div class="project-index">08</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Misfit Qualities</div>
+              <div class="project-title">Misfit Qualities</div>
+              <div class="project-index">09</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Vase, Oval and Triangle</div>
+              <div class="project-title">Vase, Oval and Triangle</div>
+              <div class="project-index">10</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Wall House 2 - Oblique Projection</div>
+              <div class="project-title">Wall House 2 - Oblique Projection</div>
+              <div class="project-index">11</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Palais de Tokyo 2019</div>
+              <div class="project-title">Palais de Tokyo 2019</div>
+              <div class="project-index">12</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Possible Actualities</div>
+              <div class="project-title">Possible Actualities</div>
+              <div class="project-index">13</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Micromega as Discrete Interpretations</div>
+              <div class="project-title">Micromega as Discrete Interpretations</div>
+              <div class="project-index">14</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Behind the Proun Paintings</div>
+              <div class="project-title">Behind the Proun Paintings</div>
+              <div class="project-index">15</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">2019 Seoul Biennale</div>
+              <div class="project-title">2019 Seoul Biennale</div>
+              <div class="project-index">16</div>
+            </div>
+            
+            <div class="project-section">
+              <div class="project-image">Object Building/City Object</div>
+              <div class="project-title">Object Building/City Object</div>
+              <div class="project-index">17</div>
+            </div>
+            
+          </div>
+        </div>
+
+        <!-- WRITINGS PAGE -->
+        <div id="writings" class="page">
+          <div class="writings-content">
+            
+            <div class="writing-section">
+              <div class="writing-title">Desire and Pain: The Thirteen Watchtowers of Cannaregio</div>
+              <div class="writing-meta">Drawing Matter, Co-authored with Mehrshad Atashi, 2024</div>
+              <div class="writing-excerpt">A close reading of John Hejduk's drawing through literary theory, examining program inversion, ritual, time, and the observer as inhabitant of space.</div>
+            </div>
+            
+            <div class="writing-section">
+              <div class="writing-title">John Hejduk's Farm Library</div>
+              <div class="writing-meta">Drawing Matter, Co-authored with Mehrshad Atashi, 2024</div>
+              <div class="writing-excerpt">Drawing as pedagogy. A single architectural drawing as entry point to understanding time, memory, and the inhabited other.</div>
+            </div>
+            
+            <div class="writing-section">
+              <div class="writing-title">Remoteness from the Proto-Image of Convention: Exploring Daniel Libeskind's Works (1970–1985) alongside His One Hundred Precedents</div>
+              <div class="writing-meta">Doctoral Dissertation, University of Innsbruck, December 2024. Supervisor: Peter Volgger</div>
+              <div class="writing-excerpt">Exploring Daniel Libeskind's works (1970–1985) alongside his One Hundred Precedents. Kant's schema-versus-image distinction as conceptual framework. Chapters on Micromega, the Three Lessons in Architecture, Myth and Idea of Site, and architectural otherness.</div>
+            </div>
+            
+          </div>
+        </div>
+
+        <!-- ABOUT PAGE -->
+        <div id="about" class="page">
+          <div class="about-content">
+            
+            <p class="about-text">mershandlee is an architecture and design studio founded in 2017 in Vienna. Co-founded and co-run by Lida Badafareh and Mehrshad Atashi.</p>
+            
+            <p class="about-text">The studio explores spatial otherness through displacement, drawing, and research. We displace an object, drawing, or painting from its context and destabilize it until it resists full comprehension—producing "otherness." Recurring sources: Libeskind's Micromega, Lissitzky's Proun, Hejduk's theatrical settings and drawings.</p>
+            
+            <p class="about-text">The practice pivoted around 2023 from drawing and exhibition work toward civic, narrative, and ecological scales.</p>
+            
+            <p class="about-text"><strong>Teaching:</strong> Lida teaches at the Department for Architecture Theory and Philosophy of Technics (ATTP), TU Wien. Prior teaching at TU Graz, University of Innsbruck, and UdK Berlin.</p>
+            
+            <p class="about-text"><strong>Education:</strong> Lida holds an MA in Architecture from Städelschule, Frankfurt, and a PhD from University of Innsbruck (December 2024). Mehrshad studied at the University of Tehran.</p>
+            
+          </div>
+        </div>
+        
+      </div>
+      
+      <div class="main-footer">
+        <a href="mailto:studio@mershandlee.com">studio@mershandlee.com</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showPage(pageName) {
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+      document.getElementById(pageName).classList.add('active');
+      document.querySelector('.main-content').scrollTop = 0;
+    }
+
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
