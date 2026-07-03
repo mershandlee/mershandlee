@@ -1,0 +1,40 @@
+backend:
+  name: github
+  repo: mershandlee/mershandlee
+  branch: main
+  auth_endpoint: api/auth
+  commit_message: "[CMS] {{collection}} {{action}}: {{slug}}"
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    folder: "_data/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "text", required: false }
+    
+  - name: "writings"
+    label: "Writings"
+    folder: "_data/writings"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Meta", name: "meta", widget: "string", hint: "e.g. Drawing Matter, 2024" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+    
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "about"
+        label: "About"
+        file: "_data/about.json"
+        fields:
+          - { label: "Content", name: "paragraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+          - { label: "Contact Email", name: "email", widget: "string" }
