@@ -1,6 +1,3 @@
-# Redirect API calls to Netlify Functions for CMS auth
 /api/auth/*  /.netlify/functions/auth/:splat  200
 /api/v1/*    /.netlify/functions/cms/:splat    200
-
-# Single page app routing
 /*    /index.html   200
