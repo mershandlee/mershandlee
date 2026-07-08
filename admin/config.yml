@@ -13,8 +13,10 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Image", name: "image", widget: "image" }
-      - { label: "Description", name: "description", widget: "text", required: false }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Meta", name: "meta", widget: "string" }
+      - { label: "Description", name: "description", widget: "markdown" }
+      - { label: "Images", name: "images", widget: "list", field: { label: "Image", name: "image", widget: "image" } }
     
   - name: "writings"
     label: "Writings"
@@ -31,6 +33,6 @@ collections:
     files:
       - name: "about"
         label: "About"
-        file: "_data/about.json"
+        file: "about.json"
         fields:
-          - { label: "Content", name: "paragraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+          - { label: "Paragraphs", name: "paragraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
