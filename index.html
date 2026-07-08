@@ -26,7 +26,6 @@
       min-height: 100vh;
     }
     
-    /* LEFT SIDEBAR - FIXED */
     .sidebar {
       width: 35%;
       padding: 60px 40px;
@@ -78,7 +77,6 @@
       opacity: 0.6;
     }
     
-    /* RIGHT MAIN CONTENT */
     .main {
       width: 65%;
       margin-left: 35%;
@@ -108,7 +106,6 @@
       align-items: center;
     }
     
-    /* PROJECTS PAGE */
     .projects-scroll {
       width: 100%;
       display: flex;
@@ -122,6 +119,12 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    
+    .project-section:hover {
+      opacity: 0.8;
     }
     
     .project-image {
@@ -149,19 +152,73 @@
       font-weight: 600;
     }
     
-    .project-index {
+    .project-detail-page {
+      width: 100%;
+      max-width: 900px;
+    }
+    
+    .back-link {
+      font-size: 13px;
+      color: #999;
+      cursor: pointer;
+      align-self: flex-start;
+      margin-bottom: 40px;
+    }
+    
+    .back-link:hover {
+      color: #000;
+    }
+    
+    .detail-title {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-align: center;
+      width: 100%;
+    }
+    
+    .detail-meta {
       font-size: 12px;
       color: #999;
-      opacity: 0;
-      transition: opacity 0.2s;
-      margin-top: 8px;
+      margin-bottom: 40px;
+      text-align: center;
+      width: 100%;
     }
     
-    .project-section:hover .project-index {
-      opacity: 1;
+    .image-gallery {
+      display: flex;
+      gap: 30px;
+      overflow-x: auto;
+      margin-bottom: 60px;
+      width: 100%;
+      padding-bottom: 15px;
     }
     
-    /* WRITINGS PAGE */
+    .gallery-image {
+      min-width: 500px;
+      height: 400px;
+      background: #f5f5f5;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .gallery-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .detail-description {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #333;
+      text-align: left;
+      width: 100%;
+    }
+    
     .writings-content {
       width: 100%;
       max-width: 700px;
@@ -182,11 +239,6 @@
       font-size: 16px;
       font-weight: 600;
       margin-bottom: 10px;
-      cursor: pointer;
-    }
-    
-    .writing-title:hover {
-      opacity: 0.6;
     }
     
     .writing-meta {
@@ -201,7 +253,6 @@
       line-height: 1.7;
     }
     
-    /* ABOUT PAGE */
     .about-content {
       width: 100%;
       max-width: 700px;
@@ -230,11 +281,8 @@
 <body>
 
   <div class="wrapper">
-    
-    <!-- LEFT SIDEBAR - FIXED -->
     <div class="sidebar">
       <div class="logo">m e r sh<br>and l ee</div>
-      
       <div class="sidebar-footer">
         <nav>
           <button onclick="showPage('projects')">Projects</button>
@@ -244,161 +292,29 @@
       </div>
     </div>
 
-    <!-- RIGHT MAIN CONTENT -->
     <div class="main">
       <div class="main-content">
-        
-        <!-- PROJECTS PAGE -->
         <div id="projects" class="page active">
-          <div class="projects-scroll">
-            
-            <div class="project-section">
-              <div class="project-image">City of Many Acts</div>
-              <div class="project-title">City of Many Acts</div>
-              <div class="project-index">01</div>
-            </div>
-            
-            <div class="project-section">
-              <div class="project-image">Rewilding the Ground</div>
-              <div class="project-title">Rewilding the Ground</div>
-              <div class="project-index">02</div>
-            </div>
-            
-            <div class="project-section">
-              <div class="project-image">Silent Witness – Traveler</div>
-              <div class="project-title">Silent Witness – Traveler</div>
-              <div class="project-index">03</div>
-            </div>
-            
-            <div class="project-section">
-              <div class="project-image">Plus Minus Wall</div>
-              <div class="project-title">Plus Minus Wall</div>
-              <div class="project-index">04</div>
-            </div>
-            
-            <div class="project-section">
-              <div class="project-image">Nikzi Bookshop</div>
-              <div class="project-title">Nikzi Bookshop</div>
-              <div class="project-index">05</div>
-            </div>
-            
-            <div class="project-section">
-              <div class="project-image">Diamond to Wall</div>
-              <div class="project-title">Diamond to Wall</div>
-              <div class="project-index">06</div>
-            </div>
-            
-            <div class="project-section">
-              <div class="project-image">This is That</div>
-              <div class="project-title">This is That</div>
-              <div class="project-index">07</div>
-            </div>
-            
-            <div class="project-section">
-              <div class="project-image">Oblique</div>
-              <div class="project-title">Oblique</div>
-              <div class="project-index">08</div>
-            </div>
-            
-            <div class="project-section">
-              <div class="project-image">Misfit Qualities</div>
-              <div class="project-title">Misfit Qualities</div>
-              <div class="project-index">09</div>
-            </div>
-            
-            <div class="project-section">
-              <div class="project-image">Vase, Oval and Triangle</div>
-              <div class="project-title">Vase, Oval and Triangle</div>
-              <div class="project-index">10</div>
-            </div>
-            
-            <div class="project-section">
-              <div class="project-image">Wall House 2 - Oblique Projection</div>
-              <div class="project-title">Wall House 2 - Oblique Projection</div>
-              <div class="project-index">11</div>
-            </div>
-            
-            <div class="project-section">
-              <div class="project-image">Palais de Tokyo 2019</div>
-              <div class="project-title">Palais de Tokyo 2019</div>
-              <div class="project-index">12</div>
-            </div>
-            
-            <div class="project-section">
-              <div class="project-image">Possible Actualities</div>
-              <div class="project-title">Possible Actualities</div>
-              <div class="project-index">13</div>
-            </div>
-            
-            <div class="project-section">
-              <div class="project-image">Micromega as Discrete Interpretations</div>
-              <div class="project-title">Micromega as Discrete Interpretations</div>
-              <div class="project-index">14</div>
-            </div>
-            
-            <div class="project-section">
-              <div class="project-image">Behind the Proun Paintings</div>
-              <div class="project-title">Behind the Proun Paintings</div>
-              <div class="project-index">15</div>
-            </div>
-            
-            <div class="project-section">
-              <div class="project-image">2019 Seoul Biennale</div>
-              <div class="project-title">2019 Seoul Biennale</div>
-              <div class="project-index">16</div>
-            </div>
-            
-            <div class="project-section">
-              <div class="project-image">Object Building/City Object</div>
-              <div class="project-title">Object Building/City Object</div>
-              <div class="project-index">17</div>
-            </div>
-            
+          <div class="projects-scroll" id="projectsList"></div>
+        </div>
+
+        <div id="project-detail" class="page">
+          <div class="project-detail-page">
+            <span class="back-link" onclick="showPage('projects')">← back to projects</span>
+            <h1 class="detail-title" id="detailTitle"></h1>
+            <div class="detail-meta" id="detailMeta"></div>
+            <div class="image-gallery" id="detailGallery"></div>
+            <div class="detail-description" id="detailDescription"></div>
           </div>
         </div>
 
-        <!-- WRITINGS PAGE -->
         <div id="writings" class="page">
-          <div class="writings-content">
-            
-            <div class="writing-section">
-              <div class="writing-title">Desire and Pain: The Thirteen Watchtowers of Cannaregio</div>
-              <div class="writing-meta">Drawing Matter, Co-authored with Mehrshad Atashi, 2024</div>
-              <div class="writing-excerpt">A close reading of John Hejduk's drawing through literary theory, examining program inversion, ritual, time, and the observer as inhabitant of space.</div>
-            </div>
-            
-            <div class="writing-section">
-              <div class="writing-title">John Hejduk's Farm Library</div>
-              <div class="writing-meta">Drawing Matter, Co-authored with Mehrshad Atashi, 2024</div>
-              <div class="writing-excerpt">Drawing as pedagogy. A single architectural drawing as entry point to understanding time, memory, and the inhabited other.</div>
-            </div>
-            
-            <div class="writing-section">
-              <div class="writing-title">Remoteness from the Proto-Image of Convention: Exploring Daniel Libeskind's Works (1970–1985) alongside His One Hundred Precedents</div>
-              <div class="writing-meta">Doctoral Dissertation, University of Innsbruck, December 2024. Supervisor: Peter Volgger</div>
-              <div class="writing-excerpt">Exploring Daniel Libeskind's works (1970–1985) alongside his One Hundred Precedents. Kant's schema-versus-image distinction as conceptual framework. Chapters on Micromega, the Three Lessons in Architecture, Myth and Idea of Site, and architectural otherness.</div>
-            </div>
-            
-          </div>
+          <div class="writings-content" id="writingsContent"></div>
         </div>
 
-        <!-- ABOUT PAGE -->
         <div id="about" class="page">
-          <div class="about-content">
-            
-            <p class="about-text">mershandlee is an architecture and design studio founded in 2017 in Vienna. Co-founded and co-run by Lida Badafareh and Mehrshad Atashi.</p>
-            
-            <p class="about-text">The studio explores spatial otherness through displacement, drawing, and research. We displace an object, drawing, or painting from its context and destabilize it until it resists full comprehension—producing "otherness." Recurring sources: Libeskind's Micromega, Lissitzky's Proun, Hejduk's theatrical settings and drawings.</p>
-            
-            <p class="about-text">The practice pivoted around 2023 from drawing and exhibition work toward civic, narrative, and ecological scales.</p>
-            
-            <p class="about-text"><strong>Teaching:</strong> Lida teaches at the Department for Architecture Theory and Philosophy of Technics (ATTP), TU Wien. Prior teaching at TU Graz, University of Innsbruck, and UdK Berlin.</p>
-            
-            <p class="about-text"><strong>Education:</strong> Lida holds an MA in Architecture from Städelschule, Frankfurt, and a PhD from University of Innsbruck (December 2024). Mehrshad studied at the University of Tehran.</p>
-            
-          </div>
+          <div class="about-content" id="aboutContent"></div>
         </div>
-        
       </div>
       
       <div class="main-footer">
@@ -408,6 +324,74 @@
   </div>
 
   <script>
+    let allProjects = [];
+    let allWritings = [];
+    let aboutData = {};
+
+    async function loadData() {
+      try {
+        const projects = await fetch('projects.json').then(r => r.json());
+        const writings = await fetch('writings.json').then(r => r.json());
+        const about = await fetch('about.json').then(r => r.json());
+        
+        allProjects = projects.projects || [];
+        allWritings = writings.writings || [];
+        aboutData = about;
+        
+        renderProjects();
+        renderWritings();
+        renderAbout();
+      } catch (error) {
+        console.error('Error loading data:', error);
+      }
+    }
+
+    function renderProjects() {
+      const container = document.getElementById('projectsList');
+      container.innerHTML = allProjects.map((project, index) => `
+        <div class="project-section" onclick="showProjectDetail('${project.slug}')">
+          <div class="project-image">
+            ${project.images && project.images[0] ? `<img src="${project.images[0]}" alt="${project.title}">` : ''}
+          </div>
+          <div class="project-title">${project.title}</div>
+        </div>
+      `).join('');
+    }
+
+    function renderWritings() {
+      const container = document.getElementById('writingsContent');
+      container.innerHTML = allWritings.map(writing => `
+        <div class="writing-section">
+          <div class="writing-title">${writing.title}</div>
+          <div class="writing-meta">${writing.meta}</div>
+          <div class="writing-excerpt">${writing.excerpt}</div>
+        </div>
+      `).join('');
+    }
+
+    function renderAbout() {
+      const container = document.getElementById('aboutContent');
+      container.innerHTML = (aboutData.paragraphs || [])
+        .map(para => `<p class="about-text">${para}</p>`)
+        .join('');
+    }
+
+    function showProjectDetail(slug) {
+      const project = allProjects.find(p => p.slug === slug);
+      if (!project) return;
+
+      document.getElementById('detailTitle').textContent = project.title;
+      document.getElementById('detailMeta').textContent = project.meta || '';
+      
+      document.getElementById('detailGallery').innerHTML = (project.images || [])
+        .map(img => `<div class="gallery-image"><img src="${img}" alt="${project.title}"></div>`)
+        .join('');
+      
+      document.getElementById('detailDescription').innerHTML = project.description || '';
+
+      showPage('project-detail');
+    }
+
     function showPage(pageName) {
       document.querySelectorAll('.page').forEach(page => {
         page.classList.remove('active');
@@ -425,6 +409,8 @@
         }
       });
     }
+
+    loadData();
   </script>
 
 </body>
