@@ -324,31 +324,67 @@
   </div>
 
   <script>
+    const projectSlugs = [
+      'rewildingtheground',
+      'cityofmanyacts',
+      'silentwitness',
+      'plusminuswall',
+      'nikizbookshop',
+      'diamondtowall',
+      'thisisthat',
+      'oblique',
+      'misfitqualities',
+      'vaseovalandtriangle',
+      'wallhouse2',
+      'palaisdeTokyo',
+      'possibleactualities',
+      'micromega',
+      'proun',
+      'seoulbiennale',
+      'objectbuilding'
+    ];
+
     let allProjects = [];
     let allWritings = [];
     let aboutData = {};
 
-    async function loadData() {
+    async function loadProjects() {
       try {
-        const projects = await fetch('projects.json').then(r => r.json());
-        const writings = await fetch('writings.json').then(r => r.json());
-        const about = await fetch('about.json').then(r => r.json());
-        
-        allProjects = projects.projects || [];
-        allWritings = writings.writings || [];
-        aboutData = about;
-        
+        allProjects = [];
+        for (const slug of projectSlugs) {
+          const response = await fetch(`_data/projects/${slug}.json`);
+          const project = await response.json();
+          allProjects.push(project);
+        }
         renderProjects();
+      } catch (error) {
+        console.error('Error loading projects:', error);
+      }
+    }
+
+    async function loadWritings() {
+      try {
+        const writings = await fetch('writings.json').then(r => r.json());
+        allWritings = writings.writings || [];
         renderWritings();
+      } catch (error) {
+        console.error('Error loading writings:', error);
+      }
+    }
+
+    async function loadAbout() {
+      try {
+        const about = await fetch('about.json').then(r => r.json());
+        aboutData = about;
         renderAbout();
       } catch (error) {
-        console.error('Error loading data:', error);
+        console.error('Error loading about:', error);
       }
     }
 
     function renderProjects() {
       const container = document.getElementById('projectsList');
-      container.innerHTML = allProjects.map((project, index) => `
+      container.innerHTML = allProjects.map((project) => `
         <div class="project-section" onclick="showProjectDetail('${project.slug}')">
           <div class="project-image">
             ${project.images && project.images[0] ? `<img src="${project.images[0]}" alt="${project.title}">` : ''}
@@ -410,7 +446,9 @@
       });
     }
 
-    loadData();
+    loadProjects();
+    loadWritings();
+    loadAbout();
   </script>
 
 </body>
