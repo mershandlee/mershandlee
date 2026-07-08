@@ -8,25 +8,29 @@ public_folder: "/images/uploads"
 collections:
   - name: "projects"
     label: "Projects"
-    folder: "_data/projects"
-    create: true
-    slug: "{{slug}}"
+    file: "projects.json"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Meta", name: "meta", widget: "string" }
-      - { label: "Description", name: "description", widget: "markdown" }
-      - { label: "Images", name: "images", widget: "list", field: { label: "Image", name: "image", widget: "image" } }
+      - label: "Projects"
+        name: "projects"
+        widget: "list"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Slug", name: "slug", widget: "string" }
+          - { label: "Meta", name: "meta", widget: "string" }
+          - { label: "Description", name: "description", widget: "markdown" }
+          - { label: "Images", name: "images", widget: "list", field: { label: "Image", name: "image", widget: "image" } }
     
   - name: "writings"
     label: "Writings"
-    folder: "_data/writings"
-    create: true
-    slug: "{{slug}}"
+    file: "writings.json"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Meta", name: "meta", widget: "string" }
-      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - label: "Writings"
+        name: "writings"
+        widget: "list"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Meta", name: "meta", widget: "string" }
+          - { label: "Excerpt", name: "excerpt", widget: "text" }
     
   - name: "pages"
     label: "Pages"
@@ -35,4 +39,10 @@ collections:
         label: "About"
         file: "about.json"
         fields:
-          - { label: "Paragraphs", name: "paragraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+          - label: "Paragraphs"
+            name: "paragraphs"
+            widget: "list"
+            field:
+              label: "Paragraph"
+              name: "paragraph"
+              widget: "text"
