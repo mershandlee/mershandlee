@@ -350,12 +350,9 @@
 
     async function loadProjects() {
       try {
-        allProjects = [];
-        for (const slug of projectSlugs) {
-          const response = await fetch(`_data/projects/${slug}.json`);
-          const project = await response.json();
-          allProjects.push(project);
-        }
+        const response = await fetch('projects.json');
+        const data = await response.json();
+        allProjects = data.projects || [];
         renderProjects();
       } catch (error) {
         console.error('Error loading projects:', error);
