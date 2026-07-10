@@ -1,3 +1,4 @@
+/*.json    /:splat.json    200
 /api/auth/*  /.netlify/functions/auth/:splat  200
 /api/v1/*    /.netlify/functions/cms/:splat    200
 /*    /index.html   200
