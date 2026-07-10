@@ -1,6 +1,6 @@
 {
   "projects": [
-    {"title":"Hobby Horse","slug":"hobbyhorse","meta":"2026","description":"Props in collaboration with Maxe Crandall for his Poets Theater, Susan Stryker's Hot Tub. Location: Vienna, Otto Wagner Areal. @Queer Museum Vienna", images/uploads/storyboard_frame-hobby-horse_website-01-01.png},
+    {"title":"Hobby Horse","slug":"hobbyhorse","meta":"2026","description":"Props in collaboration with Maxe Crandall for his Poets Theater, Susan Stryker's Hot Tub. Location: Vienna, Otto Wagner Areal. @Queer Museum Vienna","images":["/images/uploads/storyboard_frame-hobby-horse_website-01-01.png"]},
     {"title":"Rewilding the Ground","slug":"rewildingtheground","meta":"2023","description":"An ecological intervention exploring how displacement and restoration can animate urban grounds.","images":[]},
     {"title":"City of Many Acts","slug":"cityofmanyacts","meta":"2024-2025","description":"A participatory urban narrative exploring collective agency and public space.","images":[]},
     {"title":"Silent Witness – Traveler","slug":"silentwitness","meta":"2023","description":"Drawing research investigating witnessing, temporality, and the observer.","images":[]},
