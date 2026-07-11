@@ -1,22 +1,147 @@
 {
   "projects": [
-    {"title":"Hobby Horse","slug":"hobbyhorse","meta":"2026","description":"Props in collaboration with Maxe Crandall for his Poets Theater, Susan Stryker's Hot Tub. Location: Vienna, Otto Wagner Areal. @Queer Museum Vienna","images":[]},
-    {"title":"Rewilding the Ground","slug":"rewildingtheground","meta":"2023","description":"An ecological intervention exploring how displacement and restoration can animate urban grounds.","images":[]},
-    {"title":"City of Many Acts","slug":"cityofmanyacts","meta":"2024-2025","description":"A participatory urban narrative exploring collective agency and public space.","images":[]},
-    {"title":"Silent Witness – Traveler","slug":"silentwitness","meta":"2023","description":"Drawing research investigating witnessing, temporality, and the observer.","images":[]},
-    {"title":"Plus Minus Wall","slug":"plusminuswall","meta":"2022","description":"","images":[]},
-    {"title":"Nikzi Bookshop","slug":"nikizbookshop","meta":"2021","description":"","images":[]},
-    {"title":"Diamond to Wall","slug":"diamondtowall","meta":"2021","description":"","images":[]},
-    {"title":"This is That","slug":"thisisthat","meta":"2020","description":"","images":[]},
-    {"title":"Oblique","slug":"oblique","meta":"2020","description":"","images":[]},
-    {"title":"Misfit Qualities","slug":"misfitqualities","meta":"2020","description":"","images":[]},
-    {"title":"Vase, Oval and Triangle","slug":"vaseovalandtriangle","meta":"2019","description":"","images":[]},
-    {"title":"Wall House 2 - Oblique Projection","slug":"wallhouse2","meta":"2019","description":"","images":[]},
-    {"title":"Palais de Tokyo 2019","slug":"palaisdeTokyo","meta":"2019","description":"","images":[]},
-    {"title":"Possible Actualities","slug":"possibleactualities","meta":"2019","description":"","images":[]},
-    {"title":"Micromega as Discrete Interpretations","slug":"micromega","meta":"2018","description":"","images":[]},
-    {"title":"Behind the Proun Paintings","slug":"proun","meta":"2018","description":"","images":[]},
-    {"title":"2019 Seoul Biennale","slug":"seoulbiennale","meta":"2019","description":"","images":[]},
-    {"title":"Object Building/City Object","slug":"objectbuilding","meta":"2017","description":"","images":[]}
+    {
+      "title": "Hobby Horse",
+      "slug": "hobbyhorse",
+      "meta": "2026",
+      "description": "Props in collaboration with Maxe Crandall for his Poets Theater, Susan Stryker's Hot Tub. Location: Vienna, Otto Wagner Areal. @Queer Museum Vienna",
+      "images": [
+        "/images/uploads/img_7308_edited_png_edited.png",
+        "/images/uploads/storyboard_frame-hobby-horse_website-01-01.png",
+        "/images/uploads/img_7241.png"
+      ]
+    },
+    {
+      "title": "Rewilding the Ground",
+      "slug": "rewildingtheground",
+      "meta": "2023",
+      "description": "Rewilding the Ground\n2023\nLocation: Vienna \nSize: Urban scale\nCompetition entry: Europan 17 \nIn collaboration with Panagis Marketos\nDesign team: Lida Badafareh, Panagis Marketos, Mehrshad Atashi\n​\nRewilding the Ground envisions a densely populated settlement for 11,000 inhabitants, where the urban artifact and nature exist in a dynamic dialogue. A significant portion of the ground is preserved and dedicated to nature—an approach that contrasts with contemporary urban developments primarily driven by land value extraction. The project introduces a spectrum of habitats and nature—ranging from highly domesticated to wild—fostering diverse ecosystems and narratives of coexistence. The settlement consists of follies, a courtyard building, and a set of housing on pilots, all embedded within a gradient of nature of varying qualities, conditioning it and being conditioned by it. Beyond its care for nature and the ground, the project offers the city of Vienna a new attraction with diverse events and common spaces. The spatial configuration strategically limits car traffic while promoting mild mobility, ensuring a pedestrian-friendly landscape.",
+      "images": [
+        "/images/uploads/plan-website.jpg",
+        "/images/uploads/overview_drawing-01-2-.jpg",
+        "/images/uploads/img_7006-small-3.png",
+        "/images/uploads/tram-way-new-small-with-clouds_edited.jpg",
+        "/images/uploads/doc02.png",
+        "/images/uploads/8-2-.jpg",
+        "/images/uploads/2-3-.jpg",
+        "/images/uploads/1-6-.jpg",
+        "/images/uploads/7-2-.jpg",
+        "/images/uploads/6-2-.jpg",
+        "/images/uploads/pathway-2-2_edited.jpg",
+        "/images/uploads/schule-post-potoshop.png"
+      ]
+    },
+    {
+      "title": "City of Many Acts",
+      "slug": "cityofmanyacts",
+      "meta": "2024-2025",
+      "description": "A participatory urban narrative exploring collective agency and public space.",
+      "images": []
+    },
+    {
+      "title": "Silent Witness – Traveler",
+      "slug": "silentwitness",
+      "meta": "2023",
+      "description": "Drawing research investigating witnessing, temporality, and the observer.",
+      "images": []
+    },
+    {
+      "title": "Plus Minus Wall",
+      "slug": "plusminuswall",
+      "meta": "2022",
+      "description": "x",
+      "images": []
+    },
+    {
+      "title": "Nikzi Bookshop",
+      "slug": "nikizbookshop",
+      "meta": "2021",
+      "description": "x",
+      "images": []
+    },
+    {
+      "title": "Diamond to Wall",
+      "slug": "diamondtowall",
+      "meta": "2021",
+      "description": "x",
+      "images": []
+    },
+    {
+      "title": "This is That",
+      "slug": "thisisthat",
+      "meta": "2020",
+      "description": "x",
+      "images": []
+    },
+    {
+      "title": "Oblique",
+      "slug": "oblique",
+      "meta": "2020",
+      "description": "x",
+      "images": []
+    },
+    {
+      "title": "Misfit Qualities",
+      "slug": "misfitqualities",
+      "meta": "2020",
+      "description": "x",
+      "images": []
+    },
+    {
+      "title": "Vase, Oval and Triangle",
+      "slug": "vaseovalandtriangle",
+      "meta": "2019",
+      "description": "x",
+      "images": []
+    },
+    {
+      "title": "Wall House 2 - Oblique Projection",
+      "slug": "wallhouse2",
+      "meta": "2019",
+      "description": "x",
+      "images": []
+    },
+    {
+      "title": "Palais de Tokyo 2019",
+      "slug": "palaisdeTokyo",
+      "meta": "2019",
+      "description": "x",
+      "images": []
+    },
+    {
+      "title": "Possible Actualities",
+      "slug": "possibleactualities",
+      "meta": "2019",
+      "description": "x",
+      "images": []
+    },
+    {
+      "title": "Micromega as Discrete Interpretations",
+      "slug": "micromega",
+      "meta": "2018",
+      "description": "x",
+      "images": []
+    },
+    {
+      "title": "Behind the Proun Paintings",
+      "slug": "proun",
+      "meta": "2018",
+      "description": "x",
+      "images": []
+    },
+    {
+      "title": "2019 Seoul Biennale",
+      "slug": "seoulbiennale",
+      "meta": "2019",
+      "description": "x",
+      "images": []
+    },
+    {
+      "title": "Object Building/City Object",
+      "slug": "objectbuilding",
+      "meta": "2017",
+      "description": "x",
+      "images": []
+    }
   ]
 }
