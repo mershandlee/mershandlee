@@ -189,47 +189,45 @@
       display: none;
     }
     
-    .image-gallery {
-  position: relative;
+.image-gallery {
+  display: flex;
+  gap: 40px;
+  overflow-x: auto;
+  overflow-y: hidden;
   width: 100%;
-  height: 600px;
-  overflow: hidden;
   margin-bottom: 30px;
   cursor: pointer;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.image-gallery::-webkit-scrollbar {
+  display: none;
 }
 
 .gallery-image {
-  width: 100%;
+  flex: 0 0 auto;
   height: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
 }
 
 .gallery-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: left center;
+  height: 600px;
+  width: auto;
   display: block;
+  max-width: none;
 }
 
 .gallery-more {
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
-  display: flex;
+  position: fixed;
+  z-index: 9999;
+  display: none;
   align-items: center;
-  gap: 20px;
-  padding: 10px 14px;
-  background: rgba(225, 222, 181, 0.94);
-  opacity: 0;
-  transition: opacity 0.2s ease;
+  gap: 14px;
+  padding: 0;
+  background: transparent;
   pointer-events: none;
-}
-
-.image-gallery:hover .gallery-more {
-  opacity: 1;
+  color: #17160f;
 }
 
 .stamp-label {
@@ -237,32 +235,24 @@
   font-size: 22px;
   font-weight: 900;
   letter-spacing: 2px;
-  color: #17160f;
   transform: rotate(-1deg);
-  text-shadow:
-    1px 0 #17160f,
-    -1px 0 rgba(23, 22, 15, 0.5),
-    0 1px rgba(23, 22, 15, 0.4);
 }
 
 .gallery-dots {
   display: flex;
-  gap: 12px;
+  gap: 10px;
 }
 
 .gallery-dot {
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #17160f;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(23, 22, 15, 0.2);
-  box-shadow:
-    inset 1px 1px 3px rgba(0, 0, 0, 0.15),
-    1px 1px 2px rgba(0, 0, 0, 0.1);
+  background: transparent;
 }
 
 .gallery-dot.active {
-  background: rgba(23, 22, 15, 0.75);
+  background: #17160f;
 }
     
     .detail-description {
@@ -357,7 +347,12 @@
             <span class="back-link" onclick="showPage('projects')">← back to projects</span>
             <h1 class="detail-title" id="detailTitle"></h1>
             <div class="detail-meta" id="detailMeta"></div>
-            <div class="image-gallery" id="detailGallery" onclick="nextProjectImage()"></div>
+            <div class="image-gallery"
+              onclick="nextProjectImage()" id="detailGallery"
+              onmousemove="moveGalleryLabel(event)"
+              onmouseenter="showGalleryLabel()"
+              onmouseleave="hideGalleryLabel()"></div>
+            <div class="gallery-more" id="galleryMore"></div>
             <div class="detail-description" id="detailDescription"></div>
           </div>
         </div>
@@ -476,7 +471,15 @@
       
      currentProject = project;
      currentImageIndex = 0;
-     renderProjectImage();
+
+     const gallery = document.getElementById('detailGallery');
+
+     gallery.innerHTML = (project.images || [])
+    .map(img => `<div class="gallery-image"><img src="${img}" alt="${project.title}"></div>`)
+    .join('');
+
+     gallery.scrollLeft = 0;
+     updateGalleryMore();
       
       document.getElementById('detailDescription').innerHTML = 
         marked.parse(project.description || '', { breaks: true });
@@ -485,11 +488,12 @@
     }
 
     function renderProjectImage() {
-  const gallery = document.getElementById('detailGallery');
+function updateGalleryMore() {
   const images = currentProject?.images || [];
+  const label = document.getElementById('galleryMore');
 
-  if (!images.length) {
-    gallery.innerHTML = '';
+  if (images.length < 2) {
+    label.innerHTML = '';
     return;
   }
 
@@ -497,24 +501,44 @@
     `<span class="gallery-dot ${index === currentImageIndex ? 'active' : ''}"></span>`
   ).join('');
 
-  gallery.innerHTML = `
-    <div class="gallery-image">
-      <img src="${images[currentImageIndex]}" alt="${currentProject.title}">
-    </div>
-    <div class="gallery-more">
-      <span class="stamp-label">(&amp;) MORE</span>
-      <div class="gallery-dots">${dots}</div>
-    </div>
+  label.innerHTML = `
+    <span class="stamp-label">(&amp;) MORE</span>
+    <div class="gallery-dots">${dots}</div>
   `;
+}
+
+function moveGalleryLabel(event) {
+  const label = document.getElementById('galleryMore');
+  label.style.left = `${event.clientX + 18}px`;
+  label.style.top = `${event.clientY + 18}px`;
+}
+
+function showGalleryLabel() {
+  document.getElementById('galleryMore').style.display = 'flex';
+}
+
+function hideGalleryLabel() {
+  document.getElementById('galleryMore').style.display = 'none';
 }
 
 function nextProjectImage() {
   const images = currentProject?.images || [];
-
   if (images.length < 2) return;
 
   currentImageIndex = (currentImageIndex + 1) % images.length;
-  renderProjectImage();
+
+  const gallery = document.getElementById('detailGallery');
+  const targetImage = gallery.children[currentImageIndex];
+
+  const galleryPosition = gallery.getBoundingClientRect();
+  const imagePosition = targetImage.getBoundingClientRect();
+
+  gallery.scrollBy({
+    left: imagePosition.left - galleryPosition.left,
+    behavior: 'smooth'
+  });
+
+  updateGalleryMore();
 }
     function showPage(pageName) {
       document.querySelectorAll('.page').forEach(page => {
