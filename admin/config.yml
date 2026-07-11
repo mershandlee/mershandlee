@@ -19,8 +19,8 @@ collections:
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Slug", name: "slug", widget: "string" }
-              - { label: "Meta", name: "meta", widget: "string" }
-              - { label: "Description", name: "description", widget: "markdown" }
+              - { label: "Meta", name: "meta", widget: "string", required: false } }
+              - { label: "Description", name: "description", widget: "markdown", required: false } }
               - { label: "Images", name: "images", widget: "list", field: { label: "Image", name: "image", widget: "image" } }
     
   - name: "writings"
