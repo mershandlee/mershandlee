@@ -21,7 +21,7 @@ collections:
               - { label: "Slug", name: "slug", widget: "string" }
               - { label: "Meta", name: "meta", widget: "string", required: false } }
               - { label: "Description", name: "description", widget: "markdown", required: false } }
-              - { label: "Images", name: "images", widget: "list", field: { label: "Image", name: "image", widget: "image" } }
+              - { label: "Images", name: "images", widget: "list", required: false, field: { label: "Image", name: "image", widget: "image" } }
     
   - name: "writings"
     label: "Writings"
