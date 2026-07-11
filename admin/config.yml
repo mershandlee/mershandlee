@@ -13,15 +13,15 @@ collections:
         label: "Projects"
         file: "projects.json"
         fields:
-      - label: "Projects"
-        name: "projects"
-        widget: "list"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Slug", name: "slug", widget: "string" }
-          - { label: "Meta", name: "meta", widget: "string", required: false }
-          - { label: "Description", name: "description", widget: "markdown", required: false }
-          - { label: "Images", name: "images", widget: "list", field: { label: "Image", name: "image", widget: "image" } }
+          - label: "Projects"
+          name: "projects"
+          widget: "list"
+          fields:
+            - { label: "Title", name: "title", widget: "string" }
+            - { label: "Slug", name: "slug", widget: "string" }
+            - { label: "Meta", name: "meta", widget: "string", required: false }
+            - { label: "Description", name: "description", widget: "markdown", required: false }
+            - { label: "Images", name: "images", widget: "list", field: { label: "Image", name: "image", widget: "image" } }
 
   - name: "writings"
     label: "Writings"
@@ -30,13 +30,13 @@ collections:
         label: "Writings"
         file: "writings.json"
         fields:
-      - label: "Writings"
-        name: "writings"
-        widget: "list"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Meta", name: "meta", widget: "string" }
-          - { label: "Excerpt", name: "excerpt", widget: "text" }
+          - label: "Writings"
+          name: "writings"
+          widget: "list"
+          fields:
+            - { label: "Title", name: "title", widget: "string" }
+            - { label: "Meta", name: "meta", widget: "string" }
+            - { label: "Excerpt", name: "excerpt", widget: "text" }
 
   - name: "pages"
     label: "Pages"
