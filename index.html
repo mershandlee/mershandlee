@@ -356,6 +356,17 @@
   </style>
 </head>
 <body>
+ <div class="welcome-page">
+  <div class="welcome-logo">m e r sh<br>and l ee</div>
+
+  <div class="welcome-message">
+    Our new website is coming soon.
+  </div>
+
+  <a class="welcome-email" href="mailto:studio@mershandlee.com">
+    studio@mershandlee.com
+  </a>
+</div> 
 
   <div class="wrapper">
     <div class="sidebar">
@@ -590,9 +601,16 @@ function nextProjectImage() {
       });
     }
 
-    loadProjects();
-    loadWritings();
-    loadAbout();
+const SITE_LIVE = false;
+
+if (SITE_LIVE) {
+  document.querySelector('.welcome-page').style.display = 'none';
+  document.querySelector('.wrapper').style.display = 'flex';
+
+  loadProjects();
+  loadWritings();
+  loadAbout();
+}
   </script>
 
 </body>
