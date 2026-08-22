@@ -223,37 +223,52 @@
   position: fixed;
   z-index: 9999;
   display: none;
-  align-items: center;
-  gap: 14px;
+  align-items: stretch;
   padding: 0;
   background: transparent;
+  border: 1px solid #000;
   pointer-events: none;
-  color: #17160f;
+  color: #000;
 }
 
 .stamp-label {
   font-family: 'Infini', 'Courier New', monospace;
-  font-size: 22px;
+  font-size: 12px;
   font-weight: 900;
-  letter-spacing: 2px;
-  transform: rotate(-1deg);
+  letter-spacing: 0.7px;
+  padding: 2px 5px;
+  background: #fff;
+  display: flex;
+  align-items: center;
 }
 
 .gallery-dots {
   display: flex;
-  gap: 10px;
+  gap: 0;
 }
 
 .gallery-dot {
-  width: 18px;
-  height: 18px;
-  border: 1px solid #17160f;
-  border-radius: 50%;
-  background: transparent;
+  position: relative;
+  width: 10px;
+  min-height: 18px;
+  background: #fff;
+
+  -webkit-mask:
+    radial-gradient(circle 2.5px at center, transparent 2.5px, #000 2.8px);
+  mask:
+    radial-gradient(circle 2.5px at center, transparent 2.5px, #000 2.8px);
 }
 
-.gallery-dot.active {
-  background: #17160f;
+.gallery-dot::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
     
     .detail-description {
