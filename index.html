@@ -631,8 +631,10 @@ function nextProjectImage() {
     }
 
 const SITE_LIVE = false;
+const PREVIEW_MODE =
+  new URLSearchParams(window.location.search).get('preview') === '1';
 
-if (SITE_LIVE) {
+if (SITE_LIVE || PREVIEW_MODE) {
   document.querySelector('.welcome-page').style.display = 'none';
   document.querySelector('.wrapper').style.display = 'flex';
 
