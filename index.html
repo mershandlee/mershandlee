@@ -226,7 +226,7 @@
   align-items: stretch;
   padding: 0;
   background: transparent;
-  border: 1px solid #000;
+  border: none;
   pointer-events: none;
   color: #000;
 }
@@ -242,9 +242,10 @@
   align-items: center;
 }
 
-.gallery-dots {
-  display: flex;
-  gap: 0;
+.gallery-dots::after {
+  content: "";
+  width: 6px;
+  background: #fff;
 }
 
 .gallery-dot {
@@ -589,7 +590,7 @@ function updateGalleryMore() {
   ).join('');
 
   label.innerHTML = `
-    <span class="stamp-label">(&amp;) MORE</span>
+    <span class="stamp-label">(&amp;) more</span>
     <div class="gallery-dots">${dots}</div>
   `;
 }
