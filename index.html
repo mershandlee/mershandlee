@@ -242,6 +242,11 @@
   align-items: center;
 }
 
+.gallery-dots {
+  display: flex;
+  align-items: center;
+}
+    
 .gallery-dot {
   width: 7px;
   min-height: 18px;
@@ -251,18 +256,6 @@
     #000 1.6px 2.1px,
     #fff 2.2px
   );
-}
-
-.gallery-dot::after {
-  content: "";
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  border: 1px solid #000;
-  border-radius: 50%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
 }
     
     .detail-description {
@@ -578,9 +571,7 @@ function updateGalleryMore() {
     return;
   }
 
-  const dots = images.map((img, index) =>
-    `<span class="gallery-dot ${index === currentImageIndex ? 'active' : ''}"></span>`
-  ).join('');
+  const dots = `<span class="gallery-dot"></span><span class="gallery-dot"></span><span class="gallery-dot"></span>`;
 
   label.innerHTML = `
     <span class="stamp-label">(&amp;) more</span>
