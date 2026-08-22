@@ -243,8 +243,17 @@
 }
 
 .gallery-dots {
-  display: flex;
-  align-items: stretch;
+  display: block;
+  width: 24px;
+  align-self: stretch;
+  background:
+    radial-gradient(
+      circle at center,
+      transparent 0 2px,
+      #000 2.1px 2.7px,
+      #fff 2.8px
+    )
+    0 0 / 8px 100% repeat-x;
 }
     
 .gallery-dots::after {
@@ -254,14 +263,7 @@
 }
     
 .gallery-dot {
-  width: 7px;
-  min-height: 18px;
-  background: radial-gradient(
-    circle at center,
-    transparent 0 2px,
-    #000 2.1px 2.8px,
-    #fff 2.9px
-  );
+  display: none;
 }
     
     .detail-description {
