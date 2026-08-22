@@ -242,22 +242,15 @@
   align-items: center;
 }
 
-.gallery-dots::after {
-  content: "";
-  width: 6px;
-  background: #fff;
-}
-
 .gallery-dot {
-  position: relative;
-  width: 10px;
+  width: 7px;
   min-height: 18px;
-  background: #fff;
-
-  -webkit-mask:
-    radial-gradient(circle 2.5px at center, transparent 2.5px, #000 2.8px);
-  mask:
-    radial-gradient(circle 2.5px at center, transparent 2.5px, #000 2.8px);
+  background: radial-gradient(
+    circle at center,
+    transparent 0 1.5px,
+    #000 1.6px 2.1px,
+    #fff 2.2px
+  );
 }
 
 .gallery-dot::after {
