@@ -244,7 +244,13 @@
 
 .gallery-dots {
   display: flex;
-  align-items: center;
+  align-items: stretch;
+}
+    
+.gallery-dots::after {
+  content: "";
+  width: 5px;
+  background: #fff;
 }
     
 .gallery-dot {
