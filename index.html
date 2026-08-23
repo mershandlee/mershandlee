@@ -207,7 +207,6 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  height: 600px;
   transform: translate(calc(-50% + 100vw), -50%);
   transition: transform 0.7s ease;
 }
@@ -217,8 +216,10 @@
 }
 
 .gallery-image img {
-  height: 600px;
   width: auto;
+  height: auto;
+  max-width: 80vw;
+  max-height: 600px;
   display: block;
   max-width: none;
 }
