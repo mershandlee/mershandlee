@@ -172,9 +172,12 @@
     /* PROJECTS FRONT PAGE FRAME */
 
 .projects-stage {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
+  position: fixed;
+  left: 470px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -182,7 +185,8 @@
 
 .projects-frame {
   position: relative;
-  width: min(500px, 48vw);
+  height: 88vh;
+  width: auto;
   aspect-ratio: 1086 / 1448;
 }
 
@@ -217,9 +221,10 @@
 }
 
 .project-preview-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 82%;
+  height: 82%;
+  object-fit: contain;
+  margin: auto;
   display: block;
   transform: translateX(110%);
   opacity: 0;
@@ -235,9 +240,9 @@
 .project-menu-panel {
   position: absolute;
   left: 21%;
-  top: 18%;
+  top: 17%;
   width: 64%;
-  height: 13%;
+  height: 24%;
   z-index: 3;
 }
 
