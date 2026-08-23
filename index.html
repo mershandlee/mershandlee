@@ -211,8 +211,24 @@
   transition: transform 0.7s ease;
 }
 
-.gallery-image.arrived {
+.gallery-image.arrived:first-child {
   transform: translate(-50%, -50%);
+}
+
+.gallery-image.arrived:nth-child(4n+2) {
+  transform: translate(calc(-50% + 10px), calc(-50% - 6px));
+}
+
+.gallery-image.arrived:nth-child(4n+3) {
+  transform: translate(calc(-50% - 8px), calc(-50% + 7px));
+}
+
+.gallery-image.arrived:nth-child(4n) {
+  transform: translate(calc(-50% + 6px), calc(-50% + 12px));
+}
+
+.gallery-image.arrived:nth-child(4n+1):not(:first-child) {
+  transform: translate(calc(-50% - 10px), calc(-50% - 4px));
 }
 
 .gallery-image img {
