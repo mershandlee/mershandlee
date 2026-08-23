@@ -630,14 +630,20 @@ function nextProjectImage() {
   const images = currentProject?.images || [];
   if (images.length < 2) return;
 
+  const gallery = document.getElementById('detailGallery');
+
   if (currentImageIndex < images.length - 1) {
     currentImageIndex++;
-
-    const gallery = document.getElementById('detailGallery');
     gallery.children[currentImageIndex].classList.add('arrived');
+  } else {
+    currentImageIndex = 0;
 
-    updateGalleryMore();
+    Array.from(gallery.children).forEach((image, index) => {
+      image.classList.toggle('arrived', index === 0);
+    });
   }
+
+  updateGalleryMore();
 }
     function showPage(pageName) {
       document.querySelectorAll('.page').forEach(page => {
