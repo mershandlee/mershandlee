@@ -631,20 +631,28 @@ function nextProjectImage() {
   if (images.length < 2) return;
 
   const gallery = document.getElementById('detailGallery');
+  const nextIndex = (currentImageIndex + 1) % images.length;
+  const firstCycle = gallery.children.length === images.length && nextIndex !== 0;
 
-  if (currentImageIndex < images.length - 1) {
-    currentImageIndex++;
-    gallery.children[currentImageIndex].classList.add('arrived');
+  if (firstCycle) {
+    gallery.children[nextIndex].classList.add('arrived');
   } else {
-    currentImageIndex = 0;
+    const original = gallery.children[nextIndex];
+    const newImage = original.cloneNode(true);
 
-    Array.from(gallery.children).forEach((image, index) => {
-      image.classList.toggle('arrived', index === 0);
+    newImage.classList.remove('arrived');
+    newImage.style.zIndex = gallery.children.length + 1;
+    gallery.appendChild(newImage);
+
+    requestAnimationFrame(() => {
+      newImage.classList.add('arrived');
     });
   }
 
+  currentImageIndex = nextIndex;
   updateGalleryMore();
 }
+    
     function showPage(pageName) {
       document.querySelectorAll('.page').forEach(page => {
         page.classList.remove('active');
