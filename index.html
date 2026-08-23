@@ -168,6 +168,116 @@
       font-size: 18px;
       font-weight: 600;
     }
+
+    /* PROJECTS FRONT PAGE FRAME */
+
+.projects-stage {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projects-frame {
+  position: relative;
+  width: min(500px, 48vw);
+  aspect-ratio: 1086 / 1448;
+}
+
+/* green PNG frame */
+.projects-frame-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* hollow opening where project image appears */
+.projects-frame-window {
+  position: absolute;
+  left: 21%;
+  top: 43%;
+  width: 54%;
+  height: 32%;
+  overflow: hidden;
+  background: transparent;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    18% 100%,
+    0 74%
+  );
+  z-index: 1;
+}
+
+.project-preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: translateX(110%);
+  opacity: 0;
+  transition: transform 0.55s ease, opacity 0.15s ease;
+}
+
+.project-preview-image.is-visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* project names above the hollow opening */
+.project-menu-panel {
+  position: absolute;
+  left: 21%;
+  top: 18%;
+  width: 64%;
+  height: 13%;
+  z-index: 3;
+}
+
+.project-menu {
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding-right: 20px;
+}
+
+.project-menu::-webkit-scrollbar {
+  display: none;
+}
+
+.project-menu-item {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  font-family: 'Infini', sans-serif;
+  font-size: 17px;
+  line-height: 1.25;
+  color: #000;
+  cursor: pointer;
+  text-align: left;
+  padding: 1px 4px;
+}
+
+/* EXACT hover colors from your reference */
+.project-menu-item:hover {
+  background: #FCD205;
+  color: #FC5005;
+}
+
+.project-scroll-icon {
+  position: absolute;
+  right: -20px;
+  top: 2px;
+  font-size: 14px;
+}
     
     .project-detail-page {
       width: 100%;
@@ -537,18 +647,69 @@
       }
     }
 
-    function renderProjects() {
-      const container = document.getElementById('projectsList');
-      container.innerHTML = allProjects.map((project) => `
-        <div class="project-section" onclick="showProjectDetail('${project.slug}')">
-          <div class="project-image">
-            ${project.images && project.images[0] ? `<img src="${project.images[0]}" alt="${project.title}">` : ''}
-          </div>
-          <div class="project-title">${project.title}</div>
-        </div>
-      `).join('');
-    }
+ function renderProjects() {
+  const container = document.getElementById('projectsList');
 
+  const projectNames = allProjects.map((project, index) => `
+    <button
+      class="project-menu-item"
+      onmouseenter="previewProject(${index})"
+      onclick="showProjectDetail('${project.slug}')">
+      ${project.title}
+    </button>
+  `).join('');
+
+  container.innerHTML = `
+    <div class="projects-stage">
+      <div class="projects-frame">
+
+        <div class="projects-frame-window">
+          <img
+            id="projectPreviewImage"
+            class="project-preview-image"
+            alt="">
+        </div>
+
+        <img
+          class="projects-frame-art"
+          src="/images/uploads/frame.png"
+          alt="">
+
+        <div class="project-menu-panel">
+          <div class="project-menu">
+            ${projectNames}
+          </div>
+
+          <div class="project-scroll-icon">↕</div>
+        </div>
+
+      </div>
+    </div>
+  `;
+}
+
+    function previewProject(index) {
+  const project = allProjects[index];
+  const preview = document.getElementById('projectPreviewImage');
+
+  if (!project || !project.images || !project.images[0] || !preview) return;
+
+  preview.classList.remove('is-visible');
+  preview.src = project.images[0];
+
+  preview.onload = () => {
+    requestAnimationFrame(() => {
+      preview.classList.add('is-visible');
+    });
+  };
+
+  if (preview.complete) {
+    requestAnimationFrame(() => {
+      preview.classList.add('is-visible');
+    });
+  }
+}
+    
     function renderWritings() {
       const container = document.getElementById('writingsContent');
       container.innerHTML = allWritings.map(writing => `
