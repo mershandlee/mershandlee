@@ -239,18 +239,24 @@
 
 /* BLACK SCROLL MARKER */
 
-.project-scroll-icon {
+.project-scroll-track {
   position: absolute;
   left: calc(12% - 24px);
   top: 8.5vh;
-
+  bottom: 7vh;
   width: 8px;
-  height: 34px;
-
-  background: #000;
-  z-index: 3;
 }
 
+.project-scroll-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 8px;
+  min-height: 24px;
+
+  background: #000;
+}
 
 /* ONLY PROJECT NAMES SCROLL */
 
@@ -345,17 +351,7 @@
   max-width: 82%;
   max-height: 65vh;
   object-fit: contain;
-
-  opacity: 0;
-  transform: translateX(45px);
-  transition:
-    opacity 0.18s ease,
-    transform 0.4s ease;
-}
-
-.project-preview-image.is-visible {
-  opacity: 1;
-  transform: translateX(0);
+  display: block;
 }
     
     .project-detail-page {
@@ -753,7 +749,6 @@ function renderProjects() {
             <button
               class="project-menu-item"
               onmouseenter="previewProject(${actualIndex})"
-              onmouseleave="hideProjectPreview()"
               onclick="showProjectDetail('${project.slug}')">
               ${project.title}
             </button>
@@ -788,7 +783,9 @@ function renderProjects() {
 
        <div class="project-list-zone">
 
+  <div class="project-scroll-track">
   <div class="project-scroll-icon"></div>
+</div>
 
   <div class="project-menu">
     ${projectGroups}
@@ -807,33 +804,55 @@ function renderProjects() {
 
     </div>
   `;
+
+  const projectMenu = container.querySelector('.project-menu');
+
+  if (projectMenu) {
+    projectMenu.addEventListener('scroll', updateProjectScrollIndicator);
+
+    requestAnimationFrame(() => {
+      updateProjectScrollIndicator();
+    });
+  }
 }
 
 
-function previewProject(index) {
+function updateProjectScrollIndicator() {
+  const menu = document.querySelector('.project-menu');
+  const track = document.querySelector('.project-scroll-track');
+  const thumb = document.querySelector('.project-scroll-icon');
+
+  if (!menu || !track || !thumb) return;
+
+  const visibleRatio = menu.clientHeight / menu.scrollHeight;
+
+  const thumbHeight = Math.max(
+    24,
+    track.clientHeight * visibleRatio
+  );
+
+  const maxScroll = menu.scrollHeight - menu.clientHeight;
+  const maxThumbMovement = track.clientHeight - thumbHeight;
+
+  const thumbPosition =
+    maxScroll > 0
+      ? (menu.scrollTop / maxScroll) * maxThumbMovement
+      : 0;
+
+  thumb.style.height = `${thumbHeight}px`;
+  thumb.style.transform = `translateY(${thumbPosition}px)`;
+
+  thumb.style.display = maxScroll > 0 ? 'block' : 'none';
+}
+
+ function previewProject(index) {
   const project = allProjects[index];
   const preview = document.getElementById('projectPreviewImage');
 
   if (!project || !project.images || !project.images[0] || !preview) return;
 
-  preview.classList.remove('is-visible');
   preview.src = project.images[0];
   preview.alt = project.title;
-
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      preview.classList.add('is-visible');
-    });
-  });
-}
-
-
-function hideProjectPreview() {
-  const preview = document.getElementById('projectPreviewImage');
-
-  if (preview) {
-    preview.classList.remove('is-visible');
-  }
 }
     
     function renderWritings() {
