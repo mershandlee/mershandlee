@@ -503,6 +503,32 @@
 .wrapper {
   display: none;
 }  
+
+ @media (max-width: 768px) {
+  .welcome-page {
+    padding: 25px 20px;
+  }
+
+  .welcome-logo {
+    width: 230px;
+  }
+
+  .welcome-logo-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .welcome-message {
+    font-size: 16px;
+  }
+
+  .welcome-email {
+    font-size: 13px;
+  }
+}
+</style>
+</head>
+<body>
   
  <div class="welcome-page">
   <div class="welcome-logo">
@@ -813,75 +839,6 @@ function nextProjectImage() {
       });
     }
 
-async function loadWelcomeProjects() {
-  try {
-    const response = await fetch('/projects.json');
-    const data = await response.json();
-
-    const projects = data.projects || data;
-    const container = document.getElementById('welcomeProjects');
-
-    if (!container || !projects) return;
-
-    window.welcomeProjectData = projects;
-
-    container.innerHTML = projects.map((project, index) => `
-      <div
-        class="welcome-project-name"
-        data-project="${index}">
-        ${project.title}
-      </div>
-    `).join('');
-
-    container
-      .querySelectorAll('.welcome-project-name')
-      .forEach((name) => {
-
-        name.addEventListener('mouseenter', () => {
-          showWelcomeProject(Number(name.dataset.project));
-        });
-
-        name.addEventListener('mouseleave', () => {
-          hideWelcomeProject();
-        });
-
-      });
-
-  } catch (error) {
-    console.error('Error loading welcome projects:', error);
-  }
-}
-
-function showWelcomeProject(index) {
-  const project = window.welcomeProjectData?.[index];
-  const image = document.getElementById('welcomePreviewImage');
-
-  if (!project || !project.images?.[0] || !image) return;
-
-  image.classList.remove('visible');
-
-  image.src = project.images[0];
-  image.alt = project.title;
-
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      image.classList.add('visible');
-    });
-  });
-}
-
-
-function hideWelcomeProject() {
-  const image = document.getElementById('welcomePreviewImage');
-
-  if (image) {
-    image.classList.remove('visible');
-  }
-}
-
-
-loadWelcomeProjects();
-  
 const SITE_LIVE = false;
 const PREVIEW_MODE =
   new URLSearchParams(window.location.search).get('preview') === '1';
