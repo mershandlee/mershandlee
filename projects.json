@@ -7,9 +7,14 @@
       "description": "<!--StartFragment-->\n\nHobby Horse\n\n2026\n\nLocation: Vienna, Otto Wagner Areal\n\nProps in Collaboration with Maxe Crandall for his Poets Theater, Susan Stryker’s Hot Tub\n\n[@ Queer Museum Vienna](https://www.queermuseumvienna.com/en/home-2/)\n\n<!--EndFragment-->",
       "images": [
         "/images/uploads/img_7308_edited_png_edited.png",
+        "/images/uploads/img_7487.png",
+        "/images/uploads/p1170858.jpg",
+        "/images/uploads/p1170867.jpg",
+        "/images/uploads/p1170879.jpg",
         "/images/uploads/storyboard_frame-hobby-horse_website-01-01.png",
         "/images/uploads/img_7241.png"
-      ]
+      ],
+      "welcomeImage": "/images/uploads/img_7308_edited_png_edited.png"
     },
     {
       "title": "Rewilding the Ground",
@@ -29,7 +34,8 @@
         "/images/uploads/6-2-.jpg",
         "/images/uploads/pathway-2-2_edited.jpg",
         "/images/uploads/schule-post-potoshop.png"
-      ]
+      ],
+      "welcomeImage": "/images/uploads/plan-website.jpg"
     },
     {
       "title": "City of Many Acts",
@@ -39,8 +45,12 @@
       "images": [
         "/images/uploads/invitation_city-of-many-acts_mershandlee_image_1.png",
         "/images/uploads/img_7107-okay-2.png",
-        "/images/uploads/img_7182-okay3.png"
-      ]
+        "/images/uploads/img_7182-okay3.png",
+        "/images/uploads/sun-catcher_city-of-many-acts_mershandlee_image_2.png",
+        "/images/uploads/shadow-theater_city-of-many-acts_mershandlee_image_3.png",
+        "/images/uploads/butterfly-catcher-and-metal-wall_city-of-many-acts_-mershandlee_image_5.png"
+      ],
+      "welcomeImage": "/images/uploads/img_6097_yellow-_final-3-4-.jpg"
     },
     {
       "title": "Silent Witness – Traveler",
@@ -56,7 +66,8 @@
         "/images/uploads/photoshop-4-rooms_4.jpg",
         "/images/uploads/oblique_.jpg",
         "/images/uploads/pages-from-the-silent-witness-traveler.jpg"
-      ]
+      ],
+      "welcomeImage": "/images/uploads/table-top-website.jpg"
     },
     {
       "title": "Plus Minus Wall",
@@ -65,6 +76,7 @@
       "description": "Plus Minus Wall\n2020-2022\nLocation: Damavand, Tehran \nSize: 160 m²\nStatus: Commissioned project- Unbuilt\nCollaborators:\nLocal Project Supervisor: JII9 (Shirin Hadadian, Milad Salehivasegh)\nStructural: Mohammad Panahi\nMechanical and Electrical: Moein Karimi\nDetail designer: Behdad Shahvari, Mansour Naghdi & Afsaneh Esfandiari nia\nGeneral contractor: Raahrodesign (Amir Mokaber, Saman Haji Saffar)\n​\nPlus Minus Wall  offers different modes of dwelling, allowing each to express itself as an individual entity while simultaneously functioning as a cohesive whole, a house. The project consists of a garden, a corridor space, a wall, a chimney, and three single-family houses. They are aligned on a diagonal axis marked by the wall on the ground, which creates a conflict between the frontality of the land and the building’s diagonal juxtaposition. The wall demarcates the space and defines a series of related antagonisms: inside and outside, closed and open, mass and void, in-between and besides, behind and front. Apart from defining the space, the wall embeds, hides, separates, and reveals the other parts of the building.",
       "images": [
         "/images/uploads/1new-website.jpg",
+        "/images/uploads/6.jpg",
         "/images/uploads/3-2.jpg",
         "/images/uploads/9.jpg",
         "/images/uploads/8.jpg",
@@ -75,7 +87,8 @@
         "/images/uploads/6-2-_edited_edited.jpg",
         "/images/uploads/3-2-_edited.jpg",
         "/images/uploads/sleeping-house_new-2-.png"
-      ]
+      ],
+      "welcomeImage": "/images/uploads/3-2.jpg"
     },
     {
       "title": "Nikzi Bookshop",
@@ -93,7 +106,8 @@
         "/images/uploads/interior_4_nikzi_20200704.png",
         "/images/uploads/interior_3_nikzi_20200703.jpg",
         "/images/uploads/interior_2_nikzi_20200702.png"
-      ]
+      ],
+      "welcomeImage": "/images/uploads/img_6465_1-small.jpg"
     },
     {
       "title": "Diamond to Wall",
@@ -102,7 +116,8 @@
       "description": "Diamond to Wall\nOn John Hejduk's North East South West House\n2022",
       "images": [
         "/images/uploads/diamond-to-wall.png"
-      ]
+      ],
+      "welcomeImage": "/images/uploads/1-9-_edited.jpg"
     },
     {
       "title": "This is That",
@@ -112,7 +127,8 @@
       "images": [
         "/images/uploads/edited.jpg",
         "/images/uploads/five-this-is-that_edited.jpg"
-      ]
+      ],
+      "welcomeImage": "/images/uploads/edited.jpg"
     },
     {
       "title": "Oblique",
@@ -121,7 +137,8 @@
       "description": "Oblique\n2021",
       "images": [
         "/images/uploads/1-191-_edited_edited_edited.png"
-      ]
+      ],
+      "welcomeImage": "/images/uploads/1-191-_edited_edited_edited.png"
     },
     {
       "title": "Misfit Qualities",
@@ -140,7 +157,8 @@
         "/images/uploads/dsc_8437.jpg",
         "/images/uploads/dsc_8928_for-cover_edited.jpg",
         "/images/uploads/misfitqualities_2_gif.gif"
-      ]
+      ],
+      "welcomeImage": "/images/uploads/dsc_8481.jpg"
     },
     {
       "title": "Vase, Oval and Triangle",
@@ -149,7 +167,8 @@
       "description": "Vase, Oval and Triangle\n2018\nVideo Animation\n​\nWithin the MMK Museum of Modern Art by Hans Hollein, the building loosely has a triangular shape, as if someone materialized the visual cone of perspective. This perspectival point became the main attribute that has been adapted by different parts of the building, the point to which things either converge or around which they are arranged. This focal characteristic appears as the explicit quality of circular, oval, and triangular shapes in the MMK building. Here, we can see that geometry is a dominant force in transforming other entities and combining them. In this project, we are exploring how readymade objects, silhouettes of its context, geometrical figures, and the elements of architecture influence each other.",
       "images": [
         "/images/uploads/untitled_-480-_edited_edited_edited.png"
-      ]
+      ],
+      "welcomeImage": "/images/uploads/untitled_-480-_edited_edited_edited.png"
     },
     {
       "title": "Wall House 2 - Oblique Projection",
@@ -160,7 +179,8 @@
         "/images/uploads/draw_wall-house-transparency-front2_1.png",
         "/images/uploads/draw_wall-house-transparency-iso_1.png",
         "/images/uploads/draw_wall-house-transparency-axo_1.png"
-      ]
+      ],
+      "welcomeImage": "/images/uploads/draw_wall-house-transparency-iso_1.png"
     },
     {
       "title": "Palais de Tokyo 2019",
@@ -169,7 +189,8 @@
       "description": "x",
       "images": [
         "/images/uploads/img-20190608-wa0009.jpg"
-      ]
+      ],
+      "welcomeImage": "/images/uploads/img-20190608-wa0009.jpg"
     },
     {
       "title": "Possible Actualities",
@@ -178,7 +199,8 @@
       "description": "x",
       "images": [
         "/images/uploads/front.111-2-.jpg"
-      ]
+      ],
+      "welcomeImage": "/images/uploads/front.111-2-.jpg"
     },
     {
       "title": "Micromega as Discrete Interpretations",
@@ -194,13 +216,10 @@
         "/images/uploads/folly.43.jpg",
         "/images/uploads/folly.60.jpg",
         "/images/uploads/folly.61.jpg",
-        "/images/uploads/untitled.20.jpg",
-        "/images/uploads/untitled.19.jpg",
-        "/images/uploads/base-file-for-folies.52.jpg",
-        "/images/uploads/base-file-for-folies.53.jpg",
         "/images/uploads/folly.82.jpg",
         "/images/uploads/folly.79.jpg"
-      ]
+      ],
+      "welcomeImage": "/images/uploads/image.jpg"
     },
     {
       "title": "Behind the Proun Paintings",
@@ -209,7 +228,8 @@
       "description": "Behind the Proun Paintings\n2017\nVideo Animations\n​\nIn El Lissitzky's Proun paintings, shapes become the indexical markings of multiple entities by ascribing different formal attributes, geometrical definitions, and spatial conditions. They belong to simultaneous objects and multiple coordinate systems, so what we see is always part of something or can become part of many things. This ambiguity lies within the transition between the virtuality and the reality of the shapes.",
       "images": [
         "/images/uploads/el-lissitzky-02.92-2-.jpg"
-      ]
+      ],
+      "welcomeImage": "/images/uploads/el-lissitzky-02.92-2-.jpg"
     },
     {
       "title": "2019 Seoul Biennale",
@@ -218,7 +238,8 @@
       "description": "x",
       "images": [
         "/images/uploads/20190718_seoulbiennale_frankfurt_poster_drawing-01_edited_edited_edited.png"
-      ]
+      ],
+      "welcomeImage": "/images/uploads/20190718_seoulbiennale_frankfurt_poster_drawing-01_edited.jpg"
     },
     {
       "title": "Object Building/City Object",
@@ -228,7 +249,8 @@
       "images": [
         "/images/uploads/plan_edited_edited.jpg",
         "/images/uploads/plan1xxx_edited_edited_edited_edited.png"
-      ]
+      ],
+      "welcomeImage": "/images/uploads/plan_edited.png"
     }
   ]
 }
