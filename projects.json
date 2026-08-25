@@ -35,7 +35,7 @@
         "/images/uploads/pathway-2-2_edited.jpg",
         "/images/uploads/schule-post-potoshop.png"
       ],
-      "welcomeImage": "/images/uploads/plan-website.jpg"
+      "welcomeImage": "/images/uploads/2-3-.jpg"
     },
     {
       "title": "City of Many Acts",
@@ -114,10 +114,11 @@
       "slug": "diamondtowall",
       "meta": "2021",
       "description": "Diamond to Wall\nOn John Hejduk's North East South West House\n2022",
-      "images": [
-        "/images/uploads/diamond-to-wall.png"
-      ],
-      "welcomeImage": "/images/uploads/1-9-_edited.jpg"
+      "images": [],
+      "welcomeImage": "/images/uploads/1-9-_edited.jpg",
+      "videos": [
+        "/images/uploads/155-animation_2.mp4"
+      ]
     },
     {
       "title": "This is That",
