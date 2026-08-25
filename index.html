@@ -851,7 +851,7 @@ function updateProjectScrollIndicator() {
 
   if (!project || !project.images || !project.images[0] || !preview) return;
 
-  preview.src = project.images[0];
+  preview.src = project.welcomeImage || project.images[0];
   preview.alt = project.title;
 }
     
