@@ -23,6 +23,7 @@ collections:
               - { label: "Description", name: "description", widget: "markdown", required: false }
               - { label: "Welcome Preview Image", name: "welcomeImage", widget: "image", required: false }
               - { label: "Images", name: "images", widget: "list", field: { label: "Image", name: "image", widget: "image" } }
+              - { label: "Videos", name: "videos", widget: "list", required: false, field: { label: "Video", name: "video", widget: "file" } }
 
   - name: "writings"
     label: "Writings"
