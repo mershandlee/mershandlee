@@ -425,6 +425,14 @@
   max-width: none;
 }
 
+.gallery-image video {
+  width: auto;
+  height: auto;
+  max-width: 80vw;
+  max-height: 600px;
+  display: block;
+}
+
 .gallery-more {
   position: fixed;
   z-index: 9999;
@@ -873,6 +881,20 @@ function updateProjectScrollIndicator() {
         .join('');
     }
 
+    function getProjectMedia(project) {
+  const images = (project.images || []).map(src => ({
+    type: 'image',
+    src: src
+  }));
+
+  const videos = (project.videos || []).map(src => ({
+    type: 'video',
+    src: src
+  }));
+
+  return [...images, ...videos];
+}
+    
     function showProjectDetail(slug) {
       const project = allProjects.find(p => p.slug === slug);
       if (!project) return;
@@ -884,14 +906,19 @@ function updateProjectScrollIndicator() {
      currentImageIndex = 0;
 
      const gallery = document.getElementById('detailGallery');
+const media = getProjectMedia(project);
 
-     gallery.innerHTML = (project.images || [])
-      .map((img, index) => `
-        <div class="gallery-image ${index === 0 ? 'arrived' : ''}" style="z-index:${index + 1}">
-         <img src="${img}" alt="${project.title}">
-        </div>
-     `)
-     .join('');
+gallery.innerHTML = media
+  .map((item, index) => `
+    <div class="gallery-image ${index === 0 ? 'arrived' : ''}" style="z-index:${index + 1}">
+      ${
+        item.type === 'video'
+          ? `<video src="${item.src}" controls preload="metadata" onclick="event.stopPropagation()"></video>`
+          : `<img src="${item.src}" alt="${project.title}">`
+      }
+    </div>
+  `)
+  .join('');
 
 updateGalleryMore();
       
@@ -902,10 +929,10 @@ updateGalleryMore();
     }
 
 function updateGalleryMore() {
-  const images = currentProject?.images || [];
+  const media = getProjectMedia(currentProject);
   const label = document.getElementById('galleryMore');
 
-  if (images.length < 2) {
+  if (media.length < 2) {
     label.innerHTML = '';
     return;
   }
@@ -933,12 +960,17 @@ function hideGalleryLabel() {
 }
 
 function nextProjectImage() {
-  const images = currentProject?.images || [];
-  if (images.length < 2) return;
+  const media = getProjectMedia(currentProject);
+  if (media.length < 2) return;
 
   const gallery = document.getElementById('detailGallery');
-  const nextIndex = (currentImageIndex + 1) % images.length;
-  const firstCycle = gallery.children.length === images.length && nextIndex !== 0;
+
+  gallery.querySelectorAll('video').forEach(video => {
+    video.pause();
+  });
+
+  const nextIndex = (currentImageIndex + 1) % media.length;
+  const firstCycle = gallery.children.length === media.length && nextIndex !== 0;
 
   if (firstCycle) {
     gallery.children[nextIndex].classList.add('arrived');
