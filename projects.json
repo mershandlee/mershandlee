@@ -204,10 +204,11 @@
       "slug": "possibleactualities",
       "meta": "2019",
       "description": "x",
-      "images": [
-        "/images/uploads/front.111-2-.jpg"
-      ],
-      "welcomeImage": "/images/uploads/front.111-2-.jpg"
+      "images": [],
+      "welcomeImage": "/images/uploads/front.111-2-.jpg",
+      "videos": [
+        "/images/uploads/0825-3-.mp4"
+      ]
     },
     {
       "title": "Micromega as Discrete Interpretations",
