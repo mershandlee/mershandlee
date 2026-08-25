@@ -431,6 +431,7 @@
   max-width: 80vw;
   max-height: 600px;
   display: block;
+  pointer-events: none;
 }
 
 .gallery-more {
@@ -913,7 +914,7 @@ gallery.innerHTML = media
     <div class="gallery-image ${index === 0 ? 'arrived' : ''}" style="z-index:${index + 1}">
       ${
         item.type === 'video'
-          ? `<video src="${item.src}" controls preload="metadata" onclick="event.stopPropagation()"></video>`
+          ? `<video src="${item.src}" autoplay loop muted playsinline preload="auto"></video>`
           : `<img src="${item.src}" alt="${project.title}">`
       }
     </div>
@@ -964,10 +965,6 @@ function nextProjectImage() {
   if (media.length < 2) return;
 
   const gallery = document.getElementById('detailGallery');
-
-  gallery.querySelectorAll('video').forEach(video => {
-    video.pause();
-  });
 
   const nextIndex = (currentImageIndex + 1) % media.length;
   const firstCycle = gallery.children.length === media.length && nextIndex !== 0;
