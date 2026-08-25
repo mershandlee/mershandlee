@@ -129,17 +129,19 @@
         "/images/uploads/edited.jpg",
         "/images/uploads/five-this-is-that_edited.jpg"
       ],
-      "welcomeImage": "/images/uploads/edited.jpg"
+      "welcomeImage": "/images/uploads/edited.jpg",
+      "videos": []
     },
     {
       "title": "Oblique",
       "slug": "oblique",
       "meta": "2020",
       "description": "Oblique\n2021",
-      "images": [
-        "/images/uploads/1-191-_edited_edited_edited.png"
-      ],
-      "welcomeImage": "/images/uploads/1-191-_edited_edited_edited.png"
+      "images": [],
+      "welcomeImage": "/images/uploads/1-191-_edited_edited_edited.png",
+      "videos": [
+        "/images/uploads/292-v.mp4"
+      ]
     },
     {
       "title": "Misfit Qualities",
