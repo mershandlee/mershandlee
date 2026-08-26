@@ -197,13 +197,38 @@
   display: block;
 }
 
-.projects-home-email {
+.projects-home-nav {
   position: absolute;
   left: 60px;
+  bottom: 60px;
+
+  display: flex;
+  gap: 20px;
+}
+
+.projects-home-nav button {
+  background: none;
+  border: none;
+  padding: 0;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+
+  cursor: pointer;
+}
+
+.projects-home-email {
+  position: absolute;
+  right: 60px;
   bottom: 50px;
+
   color: #000;
   text-decoration: none;
   font-size: 14px;
+
+  z-index: 5;
 }
 
 /* WARM YELLOW RIGHT TWO THIRDS */
@@ -946,22 +971,19 @@ function renderProjects() {
   container.innerHTML = `
     <div class="projects-stage">
 
-      <div class="projects-home-white">
+  <div class="projects-home-white">
 
-<img
-  class="projects-home-logo"
-  src="/images/uploads/mershandlee_logo-.png"
-  alt="mershandlee"
-  onclick="showPage('projects')"
-  style="cursor: pointer;">
+  <img
+    class="projects-home-logo"
+    src="/images/uploads/mershandlee_logo-.png"
+    alt="mershandlee">
 
-        <a
-          class="projects-home-email"
-          href="mailto:studio@mershandlee.com">
-          studio@mershandlee.com
-        </a>
+  <nav class="projects-home-nav">
+    <button onclick="showPage('about')">About</button>
+    <button onclick="showPage('writings')">Writings</button>
+  </nav>
 
-      </div>
+</div>
 
       <div class="projects-home-yellow">
 
@@ -974,7 +996,11 @@ function renderProjects() {
   <div class="project-menu">
     ${projectGroups}
   </div>
-
+<a
+  class="projects-home-email"
+  href="mailto:studio@mershandlee.com">
+  studio@mershandlee.com
+</a>
 </div>
 
         <div class="project-preview-area">
