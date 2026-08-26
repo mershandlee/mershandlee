@@ -524,18 +524,185 @@
       line-height: 1.7;
     }
     
-    .about-content {
-      width: 100%;
-      max-width: 700px;
-    }
-    
-    .about-text {
-      font-size: 14px;
-      line-height: 1.8;
-      color: #333;
-      margin-bottom: 24px;
-      text-align: center;
-    }
+ /* ABOUT PAGE */
+
+.about-content {
+  width: 100%;
+}
+
+
+/* FULL PAGE */
+
+.about-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow: hidden;
+}
+
+
+/* WHITE LEFT THIRD */
+
+.about-home-white {
+  position: relative;
+
+  background: #fff;
+
+  padding: 50px 60px;
+  box-sizing: border-box;
+}
+
+.about-home-logo {
+  width: 340px;
+  max-width: 80%;
+  height: auto;
+
+  display: block;
+}
+
+.about-home-email {
+  position: absolute;
+
+  left: 60px;
+  bottom: 50px;
+
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+
+/* WARM YELLOW RIGHT TWO THIRDS */
+
+.about-home-yellow {
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+
+  background: #E2D5A0;
+
+  padding:
+    8.5vh
+    12%
+    7vh
+    12%;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+
+/* FIXED LANDSCAPE PHOTO */
+
+.about-image-area {
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.about-image {
+  width: 100%;
+  height: auto;
+
+  display: block;
+
+  object-fit: contain;
+}
+
+
+/* TEXT AREA */
+
+.about-text-zone {
+  position: relative;
+
+  width: 100%;
+
+  flex: 1;
+  min-height: 0;
+
+  margin-top: 55px;
+}
+
+
+/* ONLY THIS AREA SCROLLS */
+
+.about-scroll-content {
+  width: 100%;
+  height: 100%;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding-bottom: 80px;
+
+  box-sizing: border-box;
+
+  scrollbar-width: none;
+}
+
+.about-scroll-content::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* BLACK SCROLL TRACK */
+
+.about-scroll-track {
+  position: absolute;
+
+  left: -24px;
+  top: 0;
+  bottom: 0;
+
+  width: 8px;
+}
+
+
+/* MOVING BLACK RECTANGLE */
+
+.about-scroll-icon {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 8px;
+  min-height: 24px;
+
+  background: #000;
+}
+
+
+/* BIOS */
+
+.about-bios {
+  width: 100%;
+}
+
+.about-text {
+  width: 100%;
+
+  font-family: 'Infini', sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+
+  color: #000;
+
+  text-align: left;
+
+  margin-bottom: 55px;
+}
     
     .main-footer {
       padding: 40px 60px 60px 0;
@@ -875,13 +1042,136 @@ function updateProjectScrollIndicator() {
       `).join('');
     }
 
-    function renderAbout() {
-      const container = document.getElementById('aboutContent');
-      container.innerHTML = (aboutData.paragraphs || [])
-        .map(para => `<p class="about-text">${para}</p>`)
-        .join('');
-    }
+function renderAbout() {
+  const container = document.getElementById('aboutContent');
 
+  const bios = (aboutData.paragraphs || [])
+    .map(para => `<div class="about-text">${para}</div>`)
+    .join('');
+
+  container.innerHTML = `
+    <div class="about-stage">
+
+      <div class="about-home-white">
+
+        <img
+          class="about-home-logo"
+          src="/images/uploads/mershandlee_logo-.png"
+          alt="mershandlee">
+
+        <a
+          class="about-home-email"
+          href="mailto:studio@mershandlee.com">
+          studio@mershandlee.com
+        </a>
+
+      </div>
+
+
+      <div class="about-home-yellow">
+
+
+        <div class="about-image-area">
+
+          ${
+            aboutData.image
+              ? `<img
+                   class="about-image"
+                   src="${aboutData.image}"
+                   alt="">`
+              : ''
+          }
+
+        </div>
+
+
+        <div class="about-text-zone">
+
+          <div class="about-scroll-track">
+            <div class="about-scroll-icon"></div>
+          </div>
+
+          <div class="about-scroll-content">
+
+            <div class="about-bios">
+              ${bios}
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+  `;
+
+
+  const aboutScroll =
+    container.querySelector('.about-scroll-content');
+
+  if (aboutScroll) {
+
+    aboutScroll.addEventListener(
+      'scroll',
+      updateAboutScrollIndicator
+    );
+
+    requestAnimationFrame(() => {
+      updateAboutScrollIndicator();
+    });
+
+  }
+}
+    
+function updateAboutScrollIndicator() {
+  const menu =
+    document.querySelector('.about-scroll-content');
+
+  const track =
+    document.querySelector('.about-scroll-track');
+
+  const thumb =
+    document.querySelector('.about-scroll-icon');
+
+  if (!menu || !track || !thumb) return;
+
+
+  const visibleRatio =
+    menu.clientHeight / menu.scrollHeight;
+
+
+  const thumbHeight = Math.max(
+    24,
+    track.clientHeight * visibleRatio
+  );
+
+
+  const maxScroll =
+    menu.scrollHeight - menu.clientHeight;
+
+  const maxThumbMovement =
+    track.clientHeight - thumbHeight;
+
+
+  const thumbPosition =
+    maxScroll > 0
+      ? (menu.scrollTop / maxScroll) * maxThumbMovement
+      : 0;
+
+
+  thumb.style.height =
+    `${thumbHeight}px`;
+
+  thumb.style.transform =
+    `translateY(${thumbPosition}px)`;
+
+
+  thumb.style.display =
+    maxScroll > 0 ? 'block' : 'none';
+}
+    
     function getProjectMedia(project) {
   const images = (project.images || []).map(src => ({
     type: 'image',
