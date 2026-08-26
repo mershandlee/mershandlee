@@ -43,14 +43,16 @@ collections:
   - name: "pages"
     label: "Pages"
     files:
-      - name: "about"
-        label: "About"
-        file: "about.json"
-        fields:
-          - label: "Paragraphs"
-            name: "paragraphs"
-            widget: "list"
-            field:
-              label: "Paragraph"
-              name: "paragraph"
-              widget: "text"
+    - name: "about"
+  label: "About"
+  file: "about.json"
+  fields:
+    - { label: "About Image", name: "image", widget: "image", required: false }
+
+    - label: "Bios"
+      name: "paragraphs"
+      widget: "list"
+      field:
+        label: "Bio / Paragraph"
+        name: "paragraph"
+        widget: "text"
