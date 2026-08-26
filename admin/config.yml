@@ -47,7 +47,7 @@ collections:
         label: "About"
         file: "about.json"
         fields:
-      - { label: "About Image", name: "image", widget: "image", required: false }
+          - { label: "About Image", name: "image", widget: "image", required: false }
           - label: "Bios"
             name: "paragraphs"
             widget: "list"
