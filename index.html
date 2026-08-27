@@ -524,18 +524,137 @@
       box-sizing: border-box;
     }
     
-    .writings-content {
-      width: 100%;
-      max-width: 700px;
-    }
-    
-   /* EACH WRITING */
+ /* WRITINGS PAGE */
+
+.writings-content {
+  width: 100%;
+}
+
+/* FULL PAGE */
+
+.writings-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* WHITE LEFT THIRD */
+
+.writings-home-white {
+  position: relative;
+  background: #fff;
+  padding: 50px 60px;
+  box-sizing: border-box;
+}
+
+.writings-home-logo {
+  width: 340px;
+  max-width: 80%;
+  height: auto;
+  display: block;
+}
+
+.writings-home-nav {
+  position: absolute;
+  left: 60px;
+  bottom: 50px;
+
+  display: flex;
+  gap: 28px;
+}
+
+.writings-home-nav button {
+  background: none;
+  border: none;
+  padding: 0;
+
+  font-family: 'Infini', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  cursor: pointer;
+}
+
+/* YELLOW RIGHT TWO THIRDS */
+
+.writings-home-yellow {
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+
+  background: #E2D5A0;
+
+  padding: 8.5vh 8% 7vh 12%;
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+/* ONLY YELLOW CONTENT SCROLLS */
+
+.writings-scroll-zone {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.writings-scroll-content {
+  width: 100%;
+  height: 100%;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding-bottom: 100px;
+  box-sizing: border-box;
+
+  scrollbar-width: none;
+}
+
+.writings-scroll-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* BLACK SCROLLBAR */
+
+.writings-scroll-track {
+  position: absolute;
+
+  left: -24px;
+  top: 0;
+  bottom: 0;
+
+  width: 8px;
+  z-index: 5;
+}
+
+.writings-scroll-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 8px;
+  min-height: 24px;
+
+  background: #000;
+}
+
+/* EACH WRITING */
 
 .writing-section {
   width: 100%;
 
   display: grid;
-  grid-template-columns: 62% 1fr;
+  grid-template-columns: 58% 1fr;
   column-gap: 18px;
   align-items: end;
 
@@ -545,7 +664,6 @@
 .writing-section:last-child {
   margin-bottom: 0;
 }
-
 
 /* IMAGE ON LEFT */
 
@@ -559,19 +677,18 @@
   display: block;
 }
 
-
-/* TITLE TO THE RIGHT, ALIGNED WITH IMAGE BOTTOM */
+/* TITLE BESIDE LOWER-RIGHT CORNER OF IMAGE */
 
 .writing-title {
   position: static;
 
   align-self: end;
 
-  color: #000;
-  background: transparent;
-
-  padding: 0;
   margin: 0 0 2px 0;
+  padding: 0;
+
+  background: transparent;
+  color: #000;
 
   font-family: 'Infini', sans-serif;
   font-size: 22px;
@@ -579,6 +696,23 @@
   line-height: 1.15;
 
   text-align: left;
+}
+
+/* EMAIL */
+
+.writings-home-email {
+  position: fixed;
+
+  right: 60px;
+  bottom: 50px;
+
+  color: #000;
+  text-decoration: none;
+
+  font-family: 'Infini', sans-serif;
+  font-size: 20px;
+
+  z-index: 100;
 }
     
  /* ABOUT PAGE */
@@ -1096,16 +1230,127 @@ function updateProjectScrollIndicator() {
 }
     
     function renderWritings() {
-      const container = document.getElementById('writingsContent');
-      container.innerHTML = allWritings.map(writing => `
-        <div class="writing-section">
-          <div class="writing-title">${writing.title}</div>
-          <div class="writing-meta">${writing.meta}</div>
-          <div class="writing-excerpt">${writing.excerpt}</div>
-        </div>
-      `).join('');
-    }
+  const container = document.getElementById('writingsContent');
 
+  const writings = allWritings.map(writing => `
+    <div class="writing-section">
+
+      <div class="writing-image-wrap">
+        ${
+          writing.image
+            ? `<img
+                 class="writing-image"
+                 src="${writing.image}"
+                 alt="${writing.title}">`
+            : ''
+        }
+      </div>
+
+      <div class="writing-title">
+        ${writing.title}
+      </div>
+
+    </div>
+  `).join('');
+
+  container.innerHTML = `
+    <div class="writings-stage">
+
+      <div class="writings-home-white">
+
+        <img
+          class="writings-home-logo"
+          src="/images/uploads/mershandlee_logo-.png"
+          alt="mershandlee"
+          onclick="showPage('projects')"
+          style="cursor: pointer;">
+
+        <nav class="writings-home-nav">
+          <button onclick="showPage('projects')">Projects</button>
+          <button onclick="showPage('about')">About</button>
+        </nav>
+
+      </div>
+
+      <div class="writings-home-yellow">
+
+        <div class="writings-scroll-zone">
+
+          <div class="writings-scroll-track">
+            <div class="writings-scroll-icon"></div>
+          </div>
+
+          <div class="writings-scroll-content">
+            ${writings}
+          </div>
+
+        </div>
+
+        <a
+          class="writings-home-email"
+          href="mailto:studio@mershandlee.com">
+          studio@mershandlee.com
+        </a>
+
+      </div>
+
+    </div>
+  `;
+
+  const writingsScroll =
+    container.querySelector('.writings-scroll-content');
+
+  if (writingsScroll) {
+    writingsScroll.addEventListener(
+      'scroll',
+      updateWritingsScrollIndicator
+    );
+
+    requestAnimationFrame(() => {
+      updateWritingsScrollIndicator();
+    });
+  }
+}
+
+  function updateWritingsScrollIndicator() {
+  const content =
+    document.querySelector('.writings-scroll-content');
+
+  const track =
+    document.querySelector('.writings-scroll-track');
+
+  const thumb =
+    document.querySelector('.writings-scroll-icon');
+
+  if (!content || !track || !thumb) return;
+
+  const visibleRatio =
+    content.clientHeight / content.scrollHeight;
+
+  const thumbHeight = Math.max(
+    24,
+    track.clientHeight * visibleRatio
+  );
+
+  const maxScroll =
+    content.scrollHeight - content.clientHeight;
+
+  const maxThumbMovement =
+    track.clientHeight - thumbHeight;
+
+  const thumbPosition =
+    maxScroll > 0
+      ? (content.scrollTop / maxScroll) * maxThumbMovement
+      : 0;
+
+  thumb.style.height = `${thumbHeight}px`;
+  thumb.style.transform =
+    `translateY(${thumbPosition}px)`;
+
+  thumb.style.display =
+    maxScroll > 0 ? 'block' : 'none';
+}
+    
 function renderAbout() {
   const container = document.getElementById('aboutContent');
 
