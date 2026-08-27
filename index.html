@@ -86,7 +86,7 @@
     nav button {
       background: none;
       border: none;
-      font-size: 14px;
+      font-size: 20px;
       font-weight: 500;
       color: #000;
       cursor: pointer;
@@ -682,7 +682,7 @@
   color: #000;
 
   font-family: 'Infini', sans-serif;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 900;
   line-height: 1.15;
 
@@ -765,17 +765,27 @@
   display: block;
 }
 
-.about-home-email {
+.about-home-nav {
   position: absolute;
-
   left: 60px;
   bottom: 50px;
 
-  color: #000;
-  text-decoration: none;
-  font-size: 14px;
+  display: flex;
+  gap: 28px;
 }
 
+.about-home-nav button {
+  background: none;
+  border: none;
+  padding: 0;
+
+  font-family: 'Infini', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+
+  cursor: pointer;
+}
 
 /* WARM YELLOW RIGHT TWO THIRDS */
 
@@ -1369,23 +1379,21 @@ function renderAbout() {
   container.innerHTML = `
     <div class="about-stage">
 
-      <div class="about-home-white">
+<div class="about-home-white">
 
-<img
-  class="about-home-logo"
-  src="/images/uploads/mershandlee_logo-.png"
-  alt="mershandlee"
-  onclick="showPage('projects')"
-  style="cursor: pointer;">
+  <img
+    class="about-home-logo"
+    src="/images/uploads/mershandlee_logo-.png"
+    alt="mershandlee"
+    onclick="showPage('projects')"
+    style="cursor: pointer;">
 
-        <a
-          class="about-home-email"
-          href="mailto:studio@mershandlee.com">
-          studio@mershandlee.com
-        </a>
+  <nav class="about-home-nav">
+    <button onclick="showPage('projects')">Projects</button>
+    <button onclick="showPage('writings')">Writings</button>
+  </nav>
 
-      </div>
-
+</div>
 
       <div class="about-home-yellow">
 
