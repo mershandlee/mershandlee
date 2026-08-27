@@ -526,11 +526,11 @@
     
  /* WRITINGS PAGE */
 
+/* WRITINGS PAGE */
+
 .writings-content {
   width: 100%;
 }
-
-/* FULL PAGE */
 
 .writings-stage {
   position: fixed;
@@ -577,7 +577,6 @@
 
   font-family: 'Infini', sans-serif;
   font-size: 20px;
-  font-weight: 400;
   color: #000;
   cursor: pointer;
 }
@@ -598,13 +597,12 @@
   overflow: hidden;
 }
 
-/* ONLY YELLOW CONTENT SCROLLS */
+/* ONLY THIS AREA SCROLLS */
 
 .writings-scroll-zone {
   position: relative;
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
 .writings-scroll-content {
@@ -614,7 +612,7 @@
   overflow-y: auto;
   overflow-x: hidden;
 
-  padding-bottom: 100px;
+  padding-bottom: 120px;
   box-sizing: border-box;
 
   scrollbar-width: none;
@@ -624,11 +622,10 @@
   display: none;
 }
 
-/* BLACK SCROLLBAR */
+/* BLACK SCROLLBAR ON LEFT */
 
 .writings-scroll-track {
   position: absolute;
-
   left: -24px;
   top: 0;
   bottom: 0;
@@ -655,21 +652,17 @@
 
   display: grid;
   grid-template-columns: 58% 1fr;
-  column-gap: 18px;
+  column-gap: 20px;
   align-items: end;
 
-  margin-bottom: 160px;
+  margin-bottom: 150px;
 }
 
 .writing-section:last-child {
   margin-bottom: 0;
 }
 
-/* IMAGE ON LEFT */
-
-.writing-image-wrap {
-  width: 100%;
-}
+/* IMAGE */
 
 .writing-image {
   width: 100%;
@@ -677,11 +670,9 @@
   display: block;
 }
 
-/* TITLE BESIDE LOWER-RIGHT CORNER OF IMAGE */
+/* TITLE TO THE RIGHT OF IMAGE, ALIGNED TO BOTTOM */
 
 .writing-title {
-  position: static;
-
   align-self: end;
 
   margin: 0 0 2px 0;
@@ -696,6 +687,22 @@
   line-height: 1.15;
 
   text-align: left;
+}
+
+/* EMAIL */
+
+.writings-home-email {
+  position: fixed;
+  right: 60px;
+  bottom: 50px;
+
+  color: #000;
+  text-decoration: none;
+
+  font-family: 'Infini', sans-serif;
+  font-size: 20px;
+
+  z-index: 100;
 }
 
 /* EMAIL */
@@ -1235,7 +1242,7 @@ function renderWritings() {
   const writings = allWritings.map(writing => `
     <div class="writing-section">
 
-      <div class="writing-image-wrap">
+      <div>
         ${
           writing.image
             ? `<img
@@ -1263,7 +1270,7 @@ function renderWritings() {
           src="/images/uploads/mershandlee_logo-.png"
           alt="mershandlee"
           onclick="showPage('projects')"
-          style="cursor: pointer;">
+          style="cursor:pointer;">
 
         <nav class="writings-home-nav">
           <button onclick="showPage('projects')">Projects</button>
@@ -1276,7 +1283,9 @@ function renderWritings() {
 
         <div class="writings-scroll-zone">
 
-         </div>
+          <div class="writings-scroll-track">
+            <div class="writings-scroll-icon"></div>
+          </div>
 
           <div class="writings-scroll-content">
             ${writings}
@@ -1308,16 +1317,22 @@ function renderWritings() {
       updateWritingsScrollIndicator();
     });
   }
-}
+} 
 
-function updateWritingsScrollIndicator() {
-  const content = document.querySelector('.writings-scroll-content');
-  const track = document.querySelector('.writings-scroll-track');
-  const thumb = document.querySelector('.writings-scroll-icon');
+ function updateWritingsScrollIndicator() {
+  const content =
+    document.querySelector('.writings-scroll-content');
+
+  const track =
+    document.querySelector('.writings-scroll-track');
+
+  const thumb =
+    document.querySelector('.writings-scroll-icon');
 
   if (!content || !track || !thumb) return;
 
-  const visibleRatio = content.clientHeight / content.scrollHeight;
+  const visibleRatio =
+    content.clientHeight / content.scrollHeight;
 
   const thumbHeight = Math.max(
     24,
@@ -1336,9 +1351,13 @@ function updateWritingsScrollIndicator() {
       : 0;
 
   thumb.style.height = `${thumbHeight}px`;
-  thumb.style.transform = `translateY(${thumbPosition}px)`;
-  thumb.style.display = maxScroll > 0 ? 'block' : 'none';
-}    
+
+  thumb.style.transform =
+    `translateY(${thumbPosition}px)`;
+
+  thumb.style.display =
+    maxScroll > 0 ? 'block' : 'none';
+}   
     
 function renderAbout() {
   const container = document.getElementById('aboutContent');
