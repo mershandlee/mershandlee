@@ -1229,7 +1229,7 @@ function updateProjectScrollIndicator() {
   preview.alt = project.title;
 }
     
-    function renderWritings() {
+function renderWritings() {
   const container = document.getElementById('writingsContent');
 
   const writings = allWritings.map(writing => `
@@ -1312,20 +1312,14 @@ function updateProjectScrollIndicator() {
   }
 }
 
-  function updateWritingsScrollIndicator() {
-  const content =
-    document.querySelector('.writings-scroll-content');
-
-  const track =
-    document.querySelector('.writings-scroll-track');
-
-  const thumb =
-    document.querySelector('.writings-scroll-icon');
+function updateWritingsScrollIndicator() {
+  const content = document.querySelector('.writings-scroll-content');
+  const track = document.querySelector('.writings-scroll-track');
+  const thumb = document.querySelector('.writings-scroll-icon');
 
   if (!content || !track || !thumb) return;
 
-  const visibleRatio =
-    content.clientHeight / content.scrollHeight;
+  const visibleRatio = content.clientHeight / content.scrollHeight;
 
   const thumbHeight = Math.max(
     24,
@@ -1344,12 +1338,9 @@ function updateProjectScrollIndicator() {
       : 0;
 
   thumb.style.height = `${thumbHeight}px`;
-  thumb.style.transform =
-    `translateY(${thumbPosition}px)`;
-
-  thumb.style.display =
-    maxScroll > 0 ? 'block' : 'none';
-}
+  thumb.style.transform = `translateY(${thumbPosition}px)`;
+  thumb.style.display = maxScroll > 0 ? 'block' : 'none';
+}    
     
 function renderAbout() {
   const container = document.getElementById('aboutContent');
