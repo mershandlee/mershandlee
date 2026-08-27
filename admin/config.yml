@@ -37,8 +37,6 @@ collections:
             widget: "list"
             fields:
               - { label: "Title", name: "title", widget: "string" }
-              - { label: "Meta", name: "meta", widget: "string" }
-              - { label: "Excerpt", name: "excerpt", widget: "text" }
               - { label: "Image", name: "image", widget: "image", required: false }
 
   - name: "pages"
