@@ -97,6 +97,65 @@
     nav button:hover {
       opacity: 0.6;
     }
+
+    /* PROJECTS HOVER MENU */
+
+.projects-hover-menu {
+  position: fixed;
+  display: none;
+
+  width: 300px;
+  max-height:565vh;
+  overflow-y: auto;
+
+  background: #E2D5A0;
+
+  padding: 22px 24px;
+  box-sizing: border-box;
+
+  z-index: 9998;
+
+  scrollbar-width: none;
+}
+
+.projects-hover-menu::-webkit-scrollbar {
+  display: none;
+}
+
+.projects-hover-menu.is-open {
+  display: block;
+}
+
+.project-hover-menu-item {
+  display: block;
+  width: 100%;
+
+  background: transparent;
+  border: none;
+
+  padding: 0;
+  margin: 0 0 18px 0;
+
+  font-family: 'Infini', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
+
+  color: #000;
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: color 0.15s ease;
+}
+
+.project-hover-menu-item:last-child {
+  margin-bottom: 0;
+}
+
+.project-hover-menu-item:hover {
+  color: #A58E32;
+}
     
     .main {
       width: calc(100% - 470px);
@@ -1009,7 +1068,13 @@
 </div>
       <div class="sidebar-footer">
         <nav>
-          <button onclick="showPage('projects')">Projects</button>
+          <button
+  class="projects-menu-trigger"
+  onclick="showPage('projects')"
+  onmouseenter="showProjectsHoverMenu(this)"
+  onmouseleave="scheduleHideProjectsHoverMenu()">
+  Projects
+</button>
           <button onclick="showPage('about')">About</button>
           <button onclick="showPage('writings')">Writings</button>
         </nav>
@@ -1087,6 +1152,7 @@
         const data = await response.json();
         allProjects = data.projects || [];
         renderProjects();
+        renderProjectsHoverMenu();
       } catch (error) {
         console.error('Error loading projects:', error);
       }
@@ -1112,6 +1178,76 @@
       }
     }
 
+let projectsMenuHideTimer;
+
+function renderProjectsHoverMenu() {
+  let menu = document.getElementById('projectsHoverMenu');
+
+  if (!menu) {
+    menu = document.createElement('div');
+    menu.id = 'projectsHoverMenu';
+    menu.className = 'projects-hover-menu';
+    document.body.appendChild(menu);
+  }
+
+  menu.innerHTML = allProjects.map(project => `
+    <button
+      class="project-hover-menu-item"
+      onclick="showProjectDetail('${project.slug}'); hideProjectsHoverMenu();">
+      ${project.title}
+    </button>
+  `).join('');
+
+  menu.onmouseenter = () => {
+    clearTimeout(projectsMenuHideTimer);
+  };
+
+  menu.onmouseleave = () => {
+    scheduleHideProjectsHoverMenu();
+  };
+}
+
+
+function showProjectsHoverMenu(trigger) {
+  const menu = document.getElementById('projectsHoverMenu');
+
+  if (!menu) return;
+
+  clearTimeout(projectsMenuHideTimer);
+
+  const rect = trigger.getBoundingClientRect();
+
+  menu.classList.add('is-open');
+
+  requestAnimationFrame(() => {
+    const top = Math.max(
+      20,
+      rect.top - menu.offsetHeight - 12
+    );
+
+    menu.style.left = `${rect.left}px`;
+    menu.style.top = `${top}px`;
+  });
+}
+
+
+function scheduleHideProjectsHoverMenu() {
+  clearTimeout(projectsMenuHideTimer);
+
+  projectsMenuHideTimer = setTimeout(() => {
+    hideProjectsHoverMenu();
+  }, 180);
+}
+
+
+function hideProjectsHoverMenu() {
+  const menu = document.getElementById('projectsHoverMenu');
+
+  if (menu) {
+    menu.classList.remove('is-open');
+  }
+}
+    
 function renderProjects() {
   const container = document.getElementById('projectsList');
 
@@ -1160,7 +1296,13 @@ function renderProjects() {
     alt="mershandlee">
 
  <nav class="projects-home-nav">
-  <button onclick="showPage('projects')">Projects</button>
+  <button
+  class="projects-menu-trigger"
+  onclick="showPage('projects')"
+  onmouseenter="showProjectsHoverMenu(this)"
+  onmouseleave="scheduleHideProjectsHoverMenu()">
+  Projects
+</button>
   <button onclick="showPage('about')">About</button>
   <button onclick="showPage('writings')">Writings</button>
 </nav>
@@ -1301,7 +1443,13 @@ function renderWritings() {
           style="cursor:pointer;">
 
        <nav class="writings-home-nav">
-  <button onclick="showPage('projects')">Projects</button>
+  <button
+  class="projects-menu-trigger"
+  onclick="showPage('projects')"
+  onmouseenter="showProjectsHoverMenu(this)"
+  onmouseleave="scheduleHideProjectsHoverMenu()">
+  Projects
+</button>
   <button onclick="showPage('about')">About</button>
   <button onclick="showPage('writings')">Writings</button>
 </nav>
@@ -1407,7 +1555,13 @@ function renderAbout() {
     style="cursor: pointer;">
 
   <nav class="about-home-nav">
-  <button onclick="showPage('projects')">Projects</button>
+  <button
+  class="projects-menu-trigger"
+  onclick="showPage('projects')"
+  onmouseenter="showProjectsHoverMenu(this)"
+  onmouseleave="scheduleHideProjectsHoverMenu()">
+  Projects
+</button>
   <button onclick="showPage('about')">About</button>
   <button onclick="showPage('writings')">Writings</button>
 </nav>
