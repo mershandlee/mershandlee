@@ -36,10 +36,9 @@ collections:
             name: "writings"
             widget: "list"
             fields:
-              fields:
-                - { label: "Title", name: "title", widget: "string" }
-                - { label: "Image", name: "image", widget: "image", required: false }
-                - { label: "Link to Text", name: "link", widget: "string", required: false }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Image", name: "image", widget: "image", required: false }
+              - { label: "Link to Text", name: "link", widget: "string", required: false }
 
   - name: "pages"
     label: "Pages"
