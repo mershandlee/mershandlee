@@ -1254,14 +1254,31 @@ function renderWritings() {
     <div class="writing-section">
 
       <div>
-        ${
-          writing.image
-            ? `<img
-                 class="writing-image"
-                 src="${writing.image}"
-                 alt="${writing.title}">`
-            : ''
-        }
+       ${
+  writing.image
+    ? writing.link
+      ? `<a
+           class="writing-image-link"
+           href="${writing.link}"
+           target="_blank"
+           rel="noopener noreferrer">
+           <img
+             class="writing-image"
+             src="${writing.image}"
+             alt="${writing.title}">
+         </a>`
+      : `<img
+           class="writing-image"
+           src="${writing.image}"
+           alt="${writing.title}">`
+    : ''
+}
+
+.writing-image-link {
+  display: block;
+  cursor: pointer;
+}
+
       </div>
 
       <div class="writing-title">
