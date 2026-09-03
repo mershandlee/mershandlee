@@ -130,39 +130,47 @@
   display: none;
 
   width: 300px;
-  max-height:37vh;
-  overflow-y: auto;
+  max-height: 37vh;
 
   background: #fff;
-
   padding: 22px 24px;
   box-sizing: border-box;
 
   z-index: 9998;
 
- scrollbar-width: thin;
-scrollbar-color: #000 #fff;
+  overflow: hidden;
 }
 
-.projects-hover-menu::-webkit-scrollbar {
+ .projects-hover-scroll-content {
+  max-height: calc(37vh - 44px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 12px;
+
+  scrollbar-width: none;
+}
+
+.projects-hover-scroll-content::-webkit-scrollbar {
+  display: none;
+}
+
+.projects-hover-scroll-track {
+  position: absolute;
+  right: 8px;
+  top: 22px;
+  bottom: 22px;
   width: 6px;
 }
 
-.projects-hover-menu::-webkit-scrollbar-track {
-  background: #fff;
-}
-
-.projects-hover-menu::-webkit-scrollbar-thumb {
+.projects-hover-scroll-thumb {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  min-height: 18px;
   background: #000;
   border-radius: 0;
-  border: none;
-}
-    
-.projects-hover-menu::-webkit-scrollbar-button {
-  display: none;
-  width: 0;
-  height: 0;
-}
+}   
     
 .projects-hover-menu.is-open {
   display: block;
@@ -1248,13 +1256,31 @@ function renderProjectsHoverMenu() {
     document.body.appendChild(menu);
   }
 
-  menu.innerHTML = allProjects.map(project => `
-    <button
-      class="project-hover-menu-item"
-      onclick="showProjectDetail('${project.slug}'); hideProjectsHoverMenu();">
-      ${project.title}
-    </button>
-  `).join('');
+  menu.innerHTML = `
+    <div class="projects-hover-scroll-content">
+      ${allProjects.map(project => `
+        <button
+          class="project-hover-menu-item"
+          onclick="showProjectDetail('${project.slug}'); hideProjectsHoverMenu();">
+          ${project.title}
+        </button>
+      `).join('')}
+    </div>
+
+    <div class="projects-hover-scroll-track">
+      <div class="projects-hover-scroll-thumb"></div>
+    </div>
+  `;
+
+  const scrollContent =
+    menu.querySelector('.projects-hover-scroll-content');
+
+  if (scrollContent) {
+    scrollContent.addEventListener(
+      'scroll',
+      updateProjectsHoverScrollbar
+    );
+  }
 
   menu.onmouseenter = () => {
     clearTimeout(projectsMenuHideTimer);
@@ -1263,9 +1289,55 @@ function renderProjectsHoverMenu() {
   menu.onmouseleave = () => {
     scheduleHideProjectsHoverMenu();
   };
+
+  requestAnimationFrame(updateProjectsHoverScrollbar);
 }
 
+function updateProjectsHoverScrollbar() {
+  const menu = document.getElementById('projectsHoverMenu');
 
+  if (!menu) return;
+
+  const content =
+    menu.querySelector('.projects-hover-scroll-content');
+
+  const track =
+    menu.querySelector('.projects-hover-scroll-track');
+
+  const thumb =
+    menu.querySelector('.projects-hover-scroll-thumb');
+
+  if (!content || !track || !thumb) return;
+
+  const maxScroll =
+    content.scrollHeight - content.clientHeight;
+
+  if (maxScroll <= 0) {
+    thumb.style.display = 'none';
+    return;
+  }
+
+  thumb.style.display = 'block';
+
+  const visibleRatio =
+    content.clientHeight / content.scrollHeight;
+
+  const thumbHeight = Math.max(
+    18,
+    track.clientHeight * visibleRatio
+  );
+
+  const maxThumbMovement =
+    track.clientHeight - thumbHeight;
+
+  const thumbPosition =
+    (content.scrollTop / maxScroll) * maxThumbMovement;
+
+  thumb.style.height = `${thumbHeight}px`;
+  thumb.style.transform =
+    `translateY(${thumbPosition}px)`;
+}
+    
 function showProjectsHoverMenu(trigger) {
   const menu = document.getElementById('projectsHoverMenu');
 
