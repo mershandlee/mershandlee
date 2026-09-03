@@ -558,7 +558,7 @@ scrollbar-color: #000 #E2D5A0;
   font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.7px;
-  padding: 2px 0 2px 5px;
+  padding: 2px 1.3px 2px 5px;
   background: #fff;
   display: flex;
   align-items: center;
@@ -566,23 +566,32 @@ scrollbar-color: #000 #E2D5A0;
 
 .gallery-dots {
   display: flex;
-  align-items: center;
-  gap: 3px;
-  margin-left: 3px;
-  padding-right: 5px;
-  background: #fff;
+  align-items: stretch;
+  gap: 0;
+  background: transparent;
 }
-    
+
 .gallery-dot {
   display: block;
-  width: 6px;
-  height: 6px;
-  border: 1px solid #000;
-  border-radius: 50%;
-  background: #fff;
-  flex: 0 0 6px;
+  width: 9px;
+  align-self: stretch;
+
+  background:
+    radial-gradient(
+      circle at center,
+      transparent 0 2.4px,
+      #000 2.5px 3.2px,
+      #fff 3.3px
+    );
+
+  flex: 0 0 9px;
 }
-    
+
+ .gallery-dots::after {
+  content: "";
+  width: 5px;
+  background: #fff;
+}   
     .detail-description {
       font-size: 20px;
       line-height: 1.8;
