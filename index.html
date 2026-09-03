@@ -159,14 +159,14 @@
   right: 8px;
   top: 22px;
   bottom: 22px;
-  width: 6px;
+  width: 12px;
 }
 
 .projects-hover-scroll-thumb {
   position: absolute;
   left: 0;
   top: 0;
-  width: 6px;
+  width: 12px;
   min-height: 18px;
   background: #000;
   border-radius: 0;
@@ -1357,6 +1357,8 @@ function showProjectsHoverMenu(trigger) {
 
     menu.style.left = `${rect.left}px`;
     menu.style.top = `${top}px`;
+
+    updateProjectsHoverScrollbar();
   });
 }
 
