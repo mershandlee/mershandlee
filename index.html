@@ -1727,14 +1727,6 @@ function updateGalleryMore() {
   `;
 }
 
-  const dots = `<span class="gallery-dot"></span><span class="gallery-dot"></span><span class="gallery-dot"></span>`;
-
-  label.innerHTML = `
-    <span class="stamp-label">(&amp;) more</span>
-    <div class="gallery-dots">${dots}</div>
-  `;
-}
-
 function moveGalleryLabel(event) {
   const label = document.getElementById('galleryMore');
   label.style.left = `${event.clientX}px`;
