@@ -154,8 +154,16 @@ scrollbar-color: #000 #fff;
 
 .projects-hover-menu::-webkit-scrollbar-thumb {
   background: #000;
+  border-radius: 0;
+  border: none;
 }
-
+    
+.projects-hover-menu::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+    
 .projects-hover-menu.is-open {
   display: block;
 }
