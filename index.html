@@ -1144,12 +1144,26 @@ scrollbar-color: #000 #E2D5A0;
     let aboutData = {};
     let currentProject = null;
     let currentImageIndex = 0;
+
+    function preloadProjectPreviews() {
+  allProjects.forEach(project => {
+    const src =
+      project.welcomeImage ||
+      (project.images && project.images[0]);
+
+    if (!src) return;
+
+    const img = new Image();
+    img.src = src;
+  });
+}
     
     async function loadProjects() {
       try {
         const response = await fetch('projects.json');
         const data = await response.json();
         allProjects = data.projects || [];
+        preloadProjectPreviews();
         renderProjects();
         renderProjectsHoverMenu();
       } catch (error) {
@@ -1378,13 +1392,19 @@ function updateProjectScrollIndicator() {
   thumb.style.display = maxScroll > 0 ? 'block' : 'none';
 }
 
- function previewProject(index) {
+function previewProject(index) {
   const project = allProjects[index];
   const preview = document.getElementById('projectPreviewImage');
 
-  if (!project || !project.images || !project.images[0] || !preview) return;
+  if (!project || !preview) return;
 
-  preview.src = project.welcomeImage || project.images[0];
+  const previewImage =
+    project.welcomeImage ||
+    (project.images && project.images[0]);
+
+  if (!previewImage) return;
+
+  preview.src = previewImage;
   preview.alt = project.title;
 }
     
