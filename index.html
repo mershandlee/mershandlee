@@ -565,31 +565,22 @@ scrollbar-color: #000 #E2D5A0;
 }
 
 .gallery-dots {
-  display: block;
-  width: 27px;
-  align-self: stretch;
-  margin-left: 1.3px;
-
-  background:
-    radial-gradient(
-      circle at center,
-      transparent 0 2.4px,
-      #000 2.5px 3.2px,
-      #fff 3.3px
-    )
-    0 0 / 9px 100% repeat-x;
-
-  box-shadow: 5px 0 0 #fff;
-}
-    
-.gallery-dots::after {
-  content: "";
-  width: 5px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: 3px;
+  padding-right: 5px;
   background: #fff;
 }
     
 .gallery-dot {
-  display: none;
+  display: block;
+  width: 6px;
+  height: 6px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  background: #fff;
+  flex: 0 0 6px;
 }
     
     .detail-description {
