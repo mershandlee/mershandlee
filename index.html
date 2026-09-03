@@ -488,7 +488,7 @@ scrollbar-color: #000 #E2D5A0;
   height: 600px;
   margin-bottom: 30px;
   overflow: hidden;
-  cursor: pointer;
+  cursor: none;
 }
 
 .image-gallery::-webkit-scrollbar {
@@ -545,54 +545,16 @@ scrollbar-color: #000 #E2D5A0;
   position: fixed;
   z-index: 9999;
   display: none;
-  align-items: stretch;
-  padding: 0;
-  background: transparent;
-  border: none;
   pointer-events: none;
-  color: #000;
-}
-
-.stamp-label {
-  font-family: 'Infini', 'Courier New', monospace;
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0.7px;
-  padding: 2px 1.3px 2px 5px;
-  background: #fff;
-  display: flex;
-  align-items: center;
-}
-
-.gallery-dots {
-  display: flex;
-  align-items: stretch;
-  gap: 0;
   background: transparent;
-  transform: translateY(1px);
 }
 
-.gallery-dot {
+.gallery-more img {
   display: block;
-  width: 9px;
-  align-self: stretch;
-
-  background:
-    radial-gradient(
-      circle at center,
-      transparent 0 2.4px,
-      #000 2.5px 3.2px,
-      #fff 3.3px
-    );
-
-  flex: 0 0 9px;
+  width: 82px;
+  height: auto;
 }
 
- .gallery-dots::after {
-  content: "";
-  width: 5px;
-  background: #fff;
-}   
     .detail-description {
       font-size: 20px;
       line-height: 1.8;
@@ -1760,6 +1722,11 @@ function updateGalleryMore() {
     return;
   }
 
+  label.innerHTML = `
+    <img src="/images/uploads/crouser.png" alt="">
+  `;
+}
+
   const dots = `<span class="gallery-dot"></span><span class="gallery-dot"></span><span class="gallery-dot"></span>`;
 
   label.innerHTML = `
@@ -1770,8 +1737,8 @@ function updateGalleryMore() {
 
 function moveGalleryLabel(event) {
   const label = document.getElementById('galleryMore');
-  label.style.left = `${event.clientX + 18}px`;
-  label.style.top = `${event.clientY + 18}px`;
+  label.style.left = `${event.clientX}px`;
+  label.style.top = `${event.clientY}px`;
 }
 
 function showGalleryLabel() {
