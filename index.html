@@ -84,11 +84,15 @@
       gap: 30px;
     }
 
-    .sidebar .sidebar-footer nav {
+  .sidebar .sidebar-footer nav {
   width: 340px;
   max-width: 80%;
   background: #fff;
   padding: 0;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 0;
 }
     
     nav {
@@ -844,6 +848,26 @@ scrollbar-color: #000 #E2D5A0;
   color: #fff;
 
   cursor: pointer;
+}
+
+.projects-home-nav,
+.writings-home-nav,
+.about-home-nav {
+  width: 340px;
+  max-width: 80%;
+  background: #fff;
+  padding: 0;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 0;
+}
+
+.projects-home-nav button,
+.writings-home-nav button,
+.about-home-nav button {
+  color: #000;
+  line-height: 1.2;
 }
 
 /* WARM YELLOW RIGHT TWO THIRDS */
