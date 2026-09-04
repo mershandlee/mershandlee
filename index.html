@@ -927,7 +927,31 @@
   object-fit: contain;
 }
 
+.about-contact {
+  width: 100%;
+  flex: 0 0 auto;
 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+
+  margin-top: 10px;
+
+  font-family: 'Infini', sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.about-contact a {
+  color: #000;
+  text-decoration: none;
+}
+
+.about-contact a:hover {
+  opacity: 0.6;
+}
+    
 /* TEXT AREA */
 
 .about-text-zone {
@@ -1717,6 +1741,15 @@ function renderAbout() {
 
         </div>
 
+        <div class="about-contact">
+          <a href="mailto:studio@mershandlee.com">
+            studio@mershandlee.com
+          </a>
+
+          <a href="tel:+4367762760296>
+            Call
+          </a>
+        </div>
 
         <div class="about-text-zone">
 
