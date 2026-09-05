@@ -1100,8 +1100,19 @@
 /* =========================
    INTERNAL SITE — MOBILE
    ========================= */
+.mobile-contact-button {
+  display: none;
+}
 
 @media (max-width: 768px) {
+
+  .mobile-contact-button {
+    display: block;
+  }
+
+  .mobile-header-email {
+    display: none !important;
+  }
 
   /* ---------- SHARED BLACK HEADER ---------- */
 
@@ -1682,6 +1693,11 @@
 </button>
           <button onclick="showPage('about')">About</button>
           <button onclick="showPage('writings')">Writings</button>
+          <button
+  class="mobile-contact-button"
+  onclick="window.location.href='mailto:studio@mershandlee.com'">
+  Contact
+</button>
         </nav>
       </div>
       <a class="mobile-header-email"
@@ -2002,6 +2018,11 @@ function renderProjects() {
 </button>
   <button onclick="showPage('about')">About</button>
   <button onclick="showPage('writings')">Writings</button>
+  <button
+  class="mobile-contact-button"
+  onclick="window.location.href='mailto:studio@mershandlee.com'">
+  Contact
+</button>
 </nav>
 
 <a class="mobile-header-email"
@@ -2155,6 +2176,11 @@ function renderWritings() {
 </button>
   <button onclick="showPage('about')">About</button>
   <button onclick="showPage('writings')">Writings</button>
+  <button
+  class="mobile-contact-button"
+  onclick="window.location.href='mailto:studio@mershandlee.com'">
+  Contact
+</button>
 </nav>
 
 <a class="mobile-header-email"
@@ -2273,6 +2299,11 @@ function renderAbout() {
 </button>
   <button onclick="showPage('about')">About</button>
   <button onclick="showPage('writings')">Writings</button>
+  <button
+  class="mobile-contact-button"
+  onclick="window.location.href='mailto:studio@mershandlee.com'">
+  Contact
+</button>
 </nav>
 
 <a class="mobile-header-email"
