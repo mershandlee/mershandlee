@@ -1352,63 +1352,80 @@
   }
 
 
-  /* ---------- ABOUT PAGE ---------- */
+/* ---------- ABOUT PAGE ---------- */
 
-  .about-home-yellow {
-    width: 100%;
-    height: auto;
+.about-home-yellow {
+  width: 100%;
+  height: auto;
 
-    flex: 1;
-    min-height: 0;
+  flex: 1;
+  min-height: 0;
 
-    padding:
-      24px
-      20px
-      20px
-      50px;
-  }
+  padding:
+    24px
+    20px
+    40px
+    50px;
 
-  .about-image-area {
-    width: 100%;
-  }
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
 
-  .about-image {
-    width: 100%;
-    height: auto;
-  }
+.about-image-area {
+  width: 100%;
+  flex: none;
+}
 
-  .about-contact {
-    width: 100%;
+.about-image {
+  width: 100%;
+  height: auto;
+}
 
-    margin-top: 8px;
+.about-contact {
+  width: 100%;
 
-    font-size: 16px;
-    line-height: 1.25;
-  }
+  margin-top: 8px;
 
-  .about-text-zone {
-    width: 100%;
+  font-size: 16px;
+  line-height: 1.25;
 
-    margin-top: 12px;
-  }
+  flex: none;
+}
 
-  .about-scroll-track {
-    left: -30px;
+.about-text-zone {
+  width: 100%;
 
-    width: 16px;
-  }
+  flex: none;
+  height: auto;
+  min-height: 0;
 
-  .about-scroll-icon {
-    width: 16px;
-  }
+  margin-top: 12px;
+}
 
-  .about-text {
-    font-size: 18px;
-    line-height: 1.45;
+.about-scroll-content {
+  width: 100%;
+  height: auto;
 
-    margin-bottom: 24px;
-  }
+  overflow: visible;
 
+  padding-bottom: 0;
+}
+
+.about-scroll-track {
+  display: none;
+}
+
+.about-scroll-icon {
+  display: none;
+}
+
+.about-text {
+  font-size: 18px;
+  line-height: 1.45;
+
+  margin-bottom: 24px;
+}
 
   /* ---------- PROJECT DROPDOWN ---------- */
 
