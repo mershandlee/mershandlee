@@ -1097,6 +1097,340 @@
   display: none;
 }  
 
+/* =========================
+   INTERNAL SITE — MOBILE
+   ========================= */
+
+@media (max-width: 768px) {
+
+  /* ---------- SHARED BLACK HEADER ---------- */
+
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: 190px;
+
+    padding: 20px;
+
+    flex: 0 0 190px;
+  }
+
+  .site-logo-image {
+    width: 230px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .sidebar .sidebar-footer nav {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .sidebar nav button {
+    font-size: 16px;
+  }
+
+
+  /* ---------- NORMAL PROJECT DETAIL LAYOUT ---------- */
+
+  .wrapper {
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  .main {
+    width: 100%;
+    margin-left: 0;
+    min-height: 0;
+  }
+
+  .main-content {
+    padding: 20px 0 30px 0;
+    overflow: visible;
+  }
+
+  .image-gallery {
+    width: 100%;
+    height: 70vw;
+    min-height: 240px;
+    max-height: 420px;
+
+    margin-bottom: 20px;
+  }
+
+  .gallery-image img,
+  .gallery-image video {
+    width: auto;
+    height: auto;
+
+    max-width: 90vw !important;
+    max-height: 65vw;
+  }
+
+  /* custom mouse cursor is unnecessary on touch screens */
+  .gallery-more {
+    display: none !important;
+  }
+
+  .detail-description {
+    width: 100%;
+    padding: 0 20px;
+
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+
+  /* ---------- PROJECTS / ABOUT / WRITINGS TOP BLACK AREA ---------- */
+
+  .projects-stage,
+  .writings-stage,
+  .about-stage {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100dvh;
+  }
+
+  .projects-home-white,
+  .writings-home-white,
+  .about-home-white {
+    width: 100%;
+    height: 190px;
+
+    flex: 0 0 190px;
+
+    padding: 20px;
+  }
+
+  .projects-home-logo,
+  .writings-home-logo,
+  .about-home-logo {
+    width: 230px;
+    max-width: 100%;
+  }
+
+  .projects-home-nav,
+  .writings-home-nav,
+  .about-home-nav {
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+
+    width: auto;
+    max-width: none;
+  }
+
+  .projects-home-nav button,
+  .writings-home-nav button,
+  .about-home-nav button {
+    font-size: 16px;
+  }
+
+
+  /* ---------- PROJECTS PAGE ---------- */
+
+  .projects-home-yellow {
+    width: 100%;
+    height: auto;
+
+    flex: 1;
+    min-height: 0;
+
+    display: block;
+
+    padding: 0;
+  }
+
+  .project-list-zone {
+    width: 100%;
+    height: 100%;
+
+    padding:
+      30px
+      20px
+      30px
+      50px;
+  }
+
+  .project-scroll-track {
+    left: 20px;
+    top: 30px;
+    bottom: 30px;
+
+    width: 16px;
+  }
+
+  .project-scroll-icon {
+    width: 16px;
+    min-height: 24px;
+  }
+
+  .project-menu {
+    padding-right: 5px;
+    padding-bottom: 60px;
+  }
+
+  .project-menu-group {
+    gap: 32px;
+  }
+
+  .project-menu-group + .project-menu-group {
+    margin-top: 55px;
+  }
+
+  .project-menu-group:nth-child(2n),
+  .project-menu-group:nth-child(4n) {
+    margin-left: 0;
+  }
+
+  .project-menu-group:nth-child(3n),
+  .project-menu-group:nth-child(5n) {
+    margin-top: 55px;
+  }
+
+  .project-menu-item {
+    font-size: 24px;
+    line-height: 1.05;
+  }
+
+  /* no hover preview on touch screens */
+  .project-preview-area {
+    display: none;
+  }
+
+
+  /* ---------- WRITINGS PAGE ---------- */
+
+  .writings-home-yellow {
+    width: 100%;
+    height: auto;
+
+    flex: 1;
+    min-height: 0;
+
+    padding:
+      30px
+      20px
+      30px
+      50px;
+  }
+
+  .writings-scroll-track {
+    left: -30px;
+
+    width: 16px;
+  }
+
+  .writings-scroll-icon {
+    width: 16px;
+  }
+
+  .writings-scroll-content {
+    padding-bottom: 60px;
+  }
+
+  .writing-section {
+    display: block;
+
+    width: 100%;
+    margin-bottom: 70px;
+  }
+
+  .writing-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .writing-title {
+    margin-top: 12px;
+
+    font-size: 18px;
+    line-height: 1.2;
+  }
+
+
+  /* ---------- ABOUT PAGE ---------- */
+
+  .about-home-yellow {
+    width: 100%;
+    height: auto;
+
+    flex: 1;
+    min-height: 0;
+
+    padding:
+      24px
+      20px
+      20px
+      50px;
+  }
+
+  .about-image-area {
+    width: 100%;
+  }
+
+  .about-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .about-contact {
+    width: 100%;
+
+    margin-top: 8px;
+
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .about-text-zone {
+    width: 100%;
+
+    margin-top: 12px;
+  }
+
+  .about-scroll-track {
+    left: -30px;
+
+    width: 16px;
+  }
+
+  .about-scroll-icon {
+    width: 16px;
+  }
+
+  .about-text {
+    font-size: 18px;
+    line-height: 1.45;
+
+    margin-bottom: 24px;
+  }
+
+
+  /* ---------- PROJECT DROPDOWN ---------- */
+
+  .projects-hover-menu {
+    width: calc(100vw - 40px);
+    max-width: 300px;
+  }
+
+
+  /* ---------- EMAIL ON PROJECT DETAIL ---------- */
+
+  .main-footer {
+    position: static;
+
+    padding: 20px;
+    margin-top: 20px;
+
+    font-size: 16px;
+    text-align: left;
+  }
+}
+    
  @media (max-width: 768px) {
   .welcome-page {
     padding: 25px 20px;
