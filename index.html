@@ -1548,24 +1548,28 @@
   /* EMAIL RECTANGLE UNDER LOGO */
 
   .mobile-header-email {
-    grid-area: email;
+  grid-area: email;
 
-    display: block;
+  display: block;
 
-    width: 100%;
-    box-sizing: border-box;
-    
-    padding: 3px 6px;
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
 
-    background: #fff;
+  padding: 2px 3px;
 
-    color: #000;
-    text-decoration: none;
+  background: #fff;
 
-    font-family: 'Infini', sans-serif;
-    font-size: 14px;
-    line-height: 1.2;
-  }
+  color: #000;
+  text-decoration: none;
+
+  font-family: 'Infini', sans-serif;
+  font-size: clamp(15px, 4.2vw, 17px);
+  line-height: 1.1;
+  letter-spacing: 0;
+
+  white-space: nowrap;
+}
 
 
   /* REMOVE THE OLD EMAIL FROM WHITE CONTENT ON MOBILE */
