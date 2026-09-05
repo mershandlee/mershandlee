@@ -2503,17 +2503,8 @@ function nextProjectImage() {
   });
 }
 
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
+    const SITE_LIVE = false;
 
-const SITE_LIVE = false;
 const PREVIEW_MODE =
   new URLSearchParams(window.location.search).get('preview') === '1';
 
@@ -2524,6 +2515,19 @@ if (SITE_LIVE || PREVIEW_MODE) {
   loadProjects();
   loadWritings();
   loadAbout();
+}
+
+if (
+  window.netlifyIdentity &&
+  typeof window.netlifyIdentity.on === 'function'
+) {
+  window.netlifyIdentity.on("init", user => {
+    if (!user) {
+      window.netlifyIdentity.on("login", () => {
+        document.location.href = "/admin/";
+      });
+    }
+  });
 }
   </script>
 
