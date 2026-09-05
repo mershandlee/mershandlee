@@ -2457,9 +2457,17 @@ function updateAboutScrollIndicator() {
   return [...images, ...videos];
 }
     
-    function showProjectDetail(slug) {
-      const project = allProjects.find(p => p.slug === slug);
-      if (!project) return;
+   function showProjectDetail(slug) {
+
+  if (
+    slug === 'seoulbiennale' ||
+    slug === 'palaisdeTokyo'
+  ) {
+    return;
+  }
+
+  const project = allProjects.find(p => p.slug === slug);
+  if (!project) return;
 
       document.getElementById('detailTitle').textContent = project.title;
       document.getElementById('detailMeta').textContent = project.meta || '';
