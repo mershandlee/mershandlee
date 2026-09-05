@@ -1458,7 +1458,7 @@
     "logo nav"
     "email .";
 
-    column-gap: 10px;
+    column-gap: 18px;
     row-gap: 8px;
     
     justify-content: start;
@@ -1509,27 +1509,29 @@
     padding: 0;
   }
 
-  .projects-home-nav,
-  .writings-home-nav,
-  .about-home-nav,
-  .sidebar .sidebar-footer nav {
-    position: static;
+ .projects-home-nav,
+.writings-home-nav,
+.about-home-nav,
+.sidebar .sidebar-footer nav {
+  position: static;
 
-    width: max-content;
-    max-width: none;
-    height: 100%;
+  width: max-content;
+  max-width: none;
+  height: 100%;
+  align-self: stretch;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 
-    gap: 0;
+  gap: 0;
 
-    padding: 4px 6px;
+  padding: 2px 3px;
 
-    background: #fff;
-  }
+  background: #fff;
+  box-sizing: border-box;
+}
 
   .projects-home-nav button,
   .writings-home-nav button,
