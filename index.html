@@ -1413,11 +1413,24 @@
 }
 
 .about-scroll-track {
-  display: none;
+  display: block;
+  position: fixed;
+
+  left: 20px;
+
+  width: 16px;
+  z-index: 50;
+
+  pointer-events: none;
 }
 
 .about-scroll-icon {
-  display: none;
+  display: block;
+
+  width: 16px;
+  min-height: 24px;
+
+  background: #000;
 }
 
 .about-text {
@@ -2325,26 +2338,40 @@ function renderAbout() {
     </div>
   `;
   
-  const aboutScroll =
-    container.querySelector('.about-scroll-content');
+const aboutScroll =
+  container.querySelector('.about-scroll-content');
 
-  if (aboutScroll) {
+const aboutMobileScroll =
+  container.querySelector('.about-home-yellow');
 
-    aboutScroll.addEventListener(
-      'scroll',
-      updateAboutScrollIndicator
-    );
+if (aboutScroll) {
+  aboutScroll.addEventListener(
+    'scroll',
+    updateAboutScrollIndicator
+  );
+}
 
-    requestAnimationFrame(() => {
-      updateAboutScrollIndicator();
-    });
+if (aboutMobileScroll) {
+  aboutMobileScroll.addEventListener(
+    'scroll',
+    updateAboutScrollIndicator
+  );
+}
 
-  }
+requestAnimationFrame(() => {
+  updateAboutScrollIndicator();
+});
 }
     
 function updateAboutScrollIndicator() {
-  const menu =
-    document.querySelector('.about-scroll-content');
+  const isMobile =
+    window.matchMedia('(max-width: 768px)').matches;
+
+  const menu = document.querySelector(
+    isMobile
+      ? '.about-home-yellow'
+      : '.about-scroll-content'
+  );
 
   const track =
     document.querySelector('.about-scroll-track');
@@ -2355,15 +2382,28 @@ function updateAboutScrollIndicator() {
   if (!menu || !track || !thumb) return;
 
 
+  /* MOBILE:
+     position the scrollbar inside the white About area */
+  if (isMobile) {
+    const rect = menu.getBoundingClientRect();
+
+    track.style.top = `${rect.top + 24}px`;
+
+    track.style.bottom =
+      `${Math.max(
+        24,
+        window.innerHeight - rect.bottom + 24
+      )}px`;
+  }
+
+
   const visibleRatio =
     menu.clientHeight / menu.scrollHeight;
-
 
   const thumbHeight = Math.max(
     24,
     track.clientHeight * visibleRatio
   );
-
 
   const maxScroll =
     menu.scrollHeight - menu.clientHeight;
@@ -2371,19 +2411,17 @@ function updateAboutScrollIndicator() {
   const maxThumbMovement =
     track.clientHeight - thumbHeight;
 
-
   const thumbPosition =
     maxScroll > 0
-      ? (menu.scrollTop / maxScroll) * maxThumbMovement
+      ? (menu.scrollTop / maxScroll) *
+        maxThumbMovement
       : 0;
-
 
   thumb.style.height =
     `${thumbHeight}px`;
 
   thumb.style.transform =
     `translateY(${thumbPosition}px)`;
-
 
   thumb.style.display =
     maxScroll > 0 ? 'block' : 'none';
