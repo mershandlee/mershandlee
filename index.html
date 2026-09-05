@@ -1459,7 +1459,7 @@
     "email .";
 
   column-gap: 0;
-  row-gap: 8px;
+  row-gap: 20px;
 
   justify-content: space-between;
 
@@ -1886,16 +1886,29 @@ function showProjectsHoverMenu(trigger) {
   menu.classList.add('is-open');
 
   requestAnimationFrame(() => {
-    const top = Math.max(
-      20,
-      rect.top - menu.offsetHeight - 12
-    );
+  const top = Math.max(
+    20,
+    rect.top - menu.offsetHeight - 12
+  );
 
-    menu.style.left = `${rect.left}px`;
-    menu.style.top = `${top}px`;
+  const left = Math.max(
+    20,
+    Math.min(rect.left, window.innerWidth - menu.offsetWidth - 20)
+  );
 
-    updateProjectsHoverScrollbar();
-  });
+  const left = Math.max(
+  20,
+  Math.min(
+    rect.left,
+    window.innerWidth - menu.offsetWidth - 20
+  )
+);
+
+menu.style.left = `${left}px`;
+  menu.style.top = `${top}px`;
+
+  updateProjectsHoverScrollbar();
+});
 }
 
 
