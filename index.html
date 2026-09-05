@@ -1453,13 +1453,15 @@
 
     display: grid;
 
-    grid-template-columns: 62% 1fr;
-    grid-template-areas:
-      "logo nav"
-      "email nav";
+   grid-template-columns: 62% max-content;
+   grid-template-areas:
+    "logo nav"
+    "email .";
 
     column-gap: 10px;
     row-gap: 8px;
+    
+    justify-content: start;
 
     background: #000;
   }
@@ -1513,7 +1515,7 @@
   .sidebar .sidebar-footer nav {
     position: static;
 
-    width: 100%;
+    width: max-content;
     max-width: none;
     height: 100%;
 
@@ -1549,7 +1551,8 @@
     display: block;
 
     width: 100%;
-
+    box-sizing: border-box;
+    
     padding: 3px 6px;
 
     background: #fff;
