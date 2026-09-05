@@ -86,7 +86,7 @@
 
   .sidebar .sidebar-footer nav {
   width: 340px;
-  max-width: 80%;
+  max-width: none;
   background: #fff;
   padding: 0;
 
@@ -1458,10 +1458,10 @@
     "logo nav"
     "email .";
 
-    column-gap: 18px;
-    row-gap: 8px;
-    
-    justify-content: start;
+  column-gap: 0;
+  row-gap: 8px;
+
+  justify-content: space-between;
 
     background: #000;
   }
@@ -1492,32 +1492,18 @@
   }
 
 
-  /* VERTICAL NAV RECTANGLE */
+/* VERTICAL NAV RECTANGLE */
 
-  .projects-home-nav,
-  .writings-home-nav,
-  .about-home-nav,
-  .sidebar-footer {
-    grid-area: nav;
-
-    position: static;
-
-    width: 100%;
-    height: 100%;
-
-    margin: 0;
-    padding: 0;
-  }
-
- .projects-home-nav,
+.projects-home-nav,
 .writings-home-nav,
-.about-home-nav,
-.sidebar .sidebar-footer nav {
+.about-home-nav {
+  grid-area: nav;
+
   position: static;
 
   width: max-content;
   max-width: none;
-  height: 100%;
+
   align-self: stretch;
 
   display: flex;
@@ -1527,27 +1513,58 @@
 
   gap: 0;
 
-  padding: 2px 3px;
+  padding: 1px 2px;
 
   background: #fff;
   box-sizing: border-box;
 }
 
-  .projects-home-nav button,
-  .writings-home-nav button,
-  .about-home-nav button,
-  .sidebar nav button {
-    font-size: 16px;
-    line-height: 1.15;
+.sidebar-footer {
+  grid-area: nav;
 
-    color: #000;
-    text-align: left;
-  }
+  position: static;
+
+  width: max-content;
+
+  margin: 0;
+  padding: 0;
+
+  align-self: stretch;
+}
+
+.sidebar .sidebar-footer nav {
+  width: max-content;
+  max-width: none;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 0;
+
+  padding: 1px 2px;
+
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.projects-home-nav button,
+.writings-home-nav button,
+.about-home-nav button,
+.sidebar nav button {
+  font-size: 16px;
+  line-height: 1.05;
+
+  color: #000;
+  text-align: left;
+}
 
 
   /* EMAIL RECTANGLE UNDER LOGO */
 
-  .mobile-header-email {
+.mobile-header-email {
   grid-area: email;
 
   display: block;
@@ -1556,7 +1573,7 @@
   max-width: none;
   box-sizing: border-box;
 
-  padding: 2px 3px;
+  padding: 1px 2px;
 
   background: #fff;
 
@@ -1564,9 +1581,9 @@
   text-decoration: none;
 
   font-family: 'Infini', sans-serif;
-  font-size: clamp(15px, 4.2vw, 17px);
+  font-size: clamp(16px, 4.45vw, 17px);
   line-height: 1.1;
-  letter-spacing: 0;
+  letter-spacing: 0.35px;
 
   white-space: nowrap;
 }
